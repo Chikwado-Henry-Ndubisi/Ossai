@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ossai75</title>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial Black}body{height:100vh;overflow:hidden}
+#splash{position:fixed;inset:0;background:#6A3D9A;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:0.5s}
+#splash img{width:160px;height:160px;border-radius:35px;background:#fff;padding:5px}
+#splash h1{color:#fff;font-size:32px;margin-top:15px}#splash p{color:#fff;font-family:Arial;font-weight:700;margin-top:5px}
+#onboard{position:fixed;inset:0;background:#fff;display:none;padding:25px;flex-direction:column}
+.slide{flex:1;display:none;flex-direction:column;justify-content:center;align-items:center;text-align:center}.slide.active{display:flex}
+.slide h2{font-size:34px;line-height:1.1;margin-bottom:15px}.slide p{font-family:Arial;font-weight:600;color:#555;max-width:300px}
+.dots{display:flex;gap:8px;justify-content:center;margin:15px}.dot{width:8px;height:8px;background:#ddd;border-radius:50%}.dot.active{background:#6A3D9A;width:22px}
+.btn{width:100%;padding:16px;border-radius:100px;border:none;font-weight:900}.btn-p{background:#6A3D9A;color:#fff}.btn-o{background:#fff;border:2px solid #000;margin-top:10px}
+</style></head><body>
+<div id="splash"><img src="icon.png"><h1>ossai75</h1><p>Pregnant Mothers Care</p></div>
+<div id="onboard">
+<b style="color:#6A3D9A;font-size:20px">ossai75</b>
+<div class="slide active"><h2>Track Your Pregnancy Week by Week</h2><p>Know your baby's growth and track weeks 1-40.</p></div>
+<div class="slide"><h2>Earn Mamacoin While You Care</h2><p>Earn rewards by completing health tips.</p></div>
+<div class="slide"><h2>Talk to Real Nurses Anytime</h2><p>Chat with verified nurses anytime.</p></div>
+<div class="slide"><h2>Inspiration for Strong Mamas</h2><p>Daily quotes to keep you strong.</p></div>
+<div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+<button class="btn btn-p" onclick="alert('Create Account')">CREATE FREE ACCOUNT</button><button class="btn btn-o" onclick="alert('Login')">LOGIN</button>
+</div>
+<script>
+setTimeout(function(){document.getElementById('splash').style.opacity='0';setTimeout(function(){document.getElementById('splash').style.display='none';document.getElementById('onboard').style.display='flex';},500)},2500);
+let c=0,sl=document.querySelectorAll('.slide'),dt=document.querySelectorAll('.dot');
+setInterval(()=>{sl[c].classList.remove('active');dt[c].classList.remove('active');c=(c+1)%4;sl[c].classList.add('active');dt[c].classList.add('active');},3000);
+</script>
+</body></html>
