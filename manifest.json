@@ -1,0 +1,16 @@
+{
+  "name": "OSSAI - Mama Pregnancy Quotes",
+  "short_name": "OSSAI",
+  "description": "Picture video quotes for pregnant mamas, earn coins",
+  "start_url": "/Ossai/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff6b00",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3348/3348348.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
