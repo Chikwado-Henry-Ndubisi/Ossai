@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ossai75</title>
+
+<!-- ossai75 - PLAY STORE READY -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff6b00">
+<meta name="description" content="ossai75 - Pregnant Mothers Care App for Nigerian Mamas">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+
+<style>
+body{margin:0;font-family:Arial;background:#fffaf5}
+.top{background:#ff6b00;color:#fff;padding:28px;text-align:center;border-radius:0 0 28px 28px}
+.card{background:#fff;margin:14px;padding:18px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+input{width:94%;padding:14px;border:1px solid #ddd;border-radius:10px}
+button{background:#ff6b00;color:#fff;border:none;padding:15px;width:100%;border-radius:12px;font-weight:bold;margin-top:10px;font-size:16px}
+.week{text-align:center;font-size:40px;color:#ff6b00;font-weight:bold}
+.progress{height:10px;background:#eee;border-radius:10px;overflow:hidden;margin:10px 0}
+.bar{height:100%;background:#ff6b00;width:0%;transition:.5s}
+</style>
+</head>
+<body>
+<div class="top"><h1>ossai75</h1><p>Pregnant Mothers Care - By Ossai</p></div>
+
+<div class="card">
+<h3>🤰 How many weeks?</h3>
+<input id="w" type="number" placeholder="e.g 16">
+<button onclick="saveW()">Save Week</button>
+<div class="week" id="sw">Week: --</div>
+</div>
+
+<div class="card" style="background:#fff8e1">
+<h3>💰 My Mamacoin Wallet</h3>
+<div><b id="pts">0</b> / 2000 pts (<span id="pct">0</span>%)</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div style="font-size:22px;font-weight:bold">₦<span id="wallet">0</span> = <span id="mc">0</span> Coin</div>
+<div style="font-size:12px;color:#666">Ads today: <span id="ads">0</span>/80</div>
+<button onclick="watchAds()">📺 Watch 3 Ads = 1 Point</button>
+<button onclick="alert('Request sent to Ossai!')" style="background:#4caf50">Withdraw</button>
+</div>
+
+<div class="card">
+<h3>🎬 Inspirational</h3>
+<p>Auto-generated video quotes for strong mamas</p>
+<button style="background:#8e44ad" onclick="location.href='quote.html'">▶️ Play Video Quotes</button>
+</div>
+
+<div class="card">
+<h3>💡 Today's Tip</h3>
+<p>Drink water, eat fruits, rest 8hrs. Your baby is strong!</p>
+</div>
+
+<div class="card">
+<h3>🏥 Help</h3>
+<button onclick="alert('Calling Nurse...')">📞 Call Nurse</button>
+<button style="background:#111" onclick="alert('Emergency alert sent!')">🚨 Emergency</button>
+</div>
+
+<script>
+let wk=localStorage.getItem('ossaiW');
+if(wk)document.getElementById('sw').innerText='Week: '+wk;
+function saveW(){
+let v=document.getElementById('w').value;
+if(!v)return;
+localStorage.setItem('ossaiW',v);
+document.getElementById('sw').innerText='Week: '+v;
+}
+
+let points=+localStorage.getItem('p')||0, ads=+localStorage.getItem('a')||0, mc=+localStorage.getItem('m')||0, w=+localStorage.getItem('wlt')||0;
+function save(){localStorage.setItem('p',points);localStorage.setItem('a',ads);localStorage.setItem('m',mc);localStorage.setItem('wlt',w); upd()}
+function upd(){
+document.getElementById('pts').innerText=points;
+document.getElementById('pct').innerText=Math.floor(points/20);
+document.getElementById('bar').style.width=points/20+'%';
+document.getElementById('mc').innerText=mc;
+document.getElementById('wallet').innerText=w;
+document.getElementById('ads').innerText=ads;
+}
+function watchAds(){
+if(ads>=80){alert('80 limit today Mama! Come tomorrow');return}
+ads+=3; points+=1;
+if(points>=2000){points-=2000; mc++; w+=7000; alert('🎉 1 Mamacoin = ₦7000! Boss account receives AdMob direct, you get paid!')}
+save()
+}
+upd()
+
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+</body>
+  </html>
