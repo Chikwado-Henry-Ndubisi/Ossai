@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#4A2D6E;width:100vw;height:100vh;overflow:hidden;font-family:Arial, sans-serif}
+.bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1}
+.bg img{width:100vw;height:100vh;object-fit:cover;display:block;border:none}
+.ads{position:fixed;left:0;width:100vw;height:90px;background:white;z-index:10;display:flex;align-items:center;justify-content:center;font-weight:900;color:black}
+.ads-top{top:0}
+.ads-bot{bottom:0}
+.marq{position:fixed;left:0;width:100vw;height:65px;z-index:11;display:flex;align-items:center;overflow:hidden;white-space:nowrap;background:transparent}
+.marq-top{top:90px}
+.marq-bot{bottom:90px}
+.marq b{color:#FFD700;font-size:55px;font-weight:900;animation:slide 18s linear infinite;padding-left:100%;white-space:nowrap}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.content{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:12;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:13vh}
+.content h1{color:white;font-size:58px;font-weight:900;font-family:Arial Black;text-shadow:0 3px 10px black}
+.content p{color:#FFD700;font-size:20px;font-weight:900;margin-bottom:25px;text-shadow:0 2px 8px black}
+.btns{display:flex;flex-direction:column;gap:22px;align-items:center}
+.btn{width:92vw;max-width:450px;height:85px;border-radius:50px;border:none;font-weight:900;font-size:30px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+.w{background:white;color:#4A2D6E}
+.o{background:rgba(255,255,255,0.15);color:white;border:4px solid white;backdrop-filter:blur(8px)}
+#splash{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#4A2D6E;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:18vh;transition:opacity 0.8s ease}
+#splash img{position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover}
+#splash .t{position:relative;z-index:2;text-align:center}
+#splash h1{color:white;font-size:64px;font-weight:900;text-shadow:0 3px 10px black}
+#splash p{color:#FFD700;font-size:22px;font-weight:900;text-shadow:0 2px 8px black}
+.loader{margin:20px auto 0;width:50px;height:50px;border:4px solid rgba(255,255,255,0.3);border-top:4px solid white;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div id="splash">
+<img src="icon.png">
+<div class="t">
+<h1>ossai75.ng</h1>
+<p>Pregnant Mothers Care App</p>
+<div class="loader"></div>
+</div>
+</div>
+
+<div class="bg"><img src="icon.png" alt="logo"></div>
+
+<div class="ads ads-top">ADS TOP 90px WHITE INTACT</div>
+<div class="marq marq-top"><b>🔥 OSSAI75.NG ★ NIGERIA SPECIAL MAMACOIN 2000PTS = ₦7000 ★ OTHER COUNTRIES 35% OF 2000 REWARDED ADS ★</b></div>
+
+<div class="content">
+<h1>ossai75.ng</h1>
+<p>Pregnant Mothers Care App</p>
+<div class="btns">
+<button class="btn w" onclick="location.href='create-account.html'">Create Account</button>
+<button class="btn o" onclick="location.href='login.html'">Login</button>
+</div>
+</div>
+
+<div class="marq marq-bot"><b>💜 WATCH 6 REWARDED ADS = 1 POINT ★ VERIFIED 3 ADS = 1 POINT ★ MAX 10 MAMACOINS ★</b></div>
+<div class="ads ads-bot">ADS BOTTOM 90px WHITE INTACT</div>
+
+<script>
+setTimeout(function(){
+var s=document.getElementById('splash');
+s.style.opacity='0';
+setTimeout(function(){s.style.display='none'},800);
+},3500);
+</script>
+
+</body>
+  </html>
