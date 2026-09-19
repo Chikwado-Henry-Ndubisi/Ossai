@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#6A3BB0;margin:0;overflow:hidden;font-family:Arial}
+#splash{position:fixed;inset:0;background:#6A3BB0;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#home{display:none;position:fixed;inset:0;background:#6A3BB0;z-index:1}
+.logo{font-size:34px;font-weight:900;color:white;margin-top:20vh;text-align:center}
+.sub{color:#FFD700;font-weight:900;text-align:center;margin:8px}
+.btns{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;gap:30px}
+.btn{border:none;background:none;font-size:22px;font-weight:900;text-shadow:0 2px 8px black}
+.gold{color:#FFD700}.white{color:white}
+.ads{position:fixed;left:0;width:100%;height:80px;background:white;z-index:10;display:flex;align-items:center;justify-content:center;font-weight:900}
+.top{top:0}.bottom{bottom:0}
+.marq{position:fixed;left:0;width:100%;height:55px;background:rgba(0,0,0,0.4);z-index:11;display:flex;align-items:center;overflow:hidden}
+.marq b{color:#FFD700;white-space:nowrap;animation:slide 8s linear infinite;padding-left:100%;font-size:22px}
+@keyframes slide{to{transform:translateX(-100%)}}
+.topM{top:80px}.botM{bottom:80px}
+.page{position:fixed;inset:0;background:#6A3BB0;z-index:50;display:none;overflow:auto;padding:15px}
+.page.on{display:block}
+.box{background:white;border-radius:15px;padding:15px;font-size:13px;line-height:1.5;max-height:65vh;overflow:auto}
+.box h3{color:#6A3BB0;margin:12px 0 4px}
+.agree{width:90%;height:58px;background:#FFD700;color:#6A3BB0;border:none;border-radius:50px;font-weight:900;margin:15px auto;display:block}
+input{width:100%;height:55px;border-radius:28px;border:none;padding:0 18px;margin:8px 0;font-weight:700}
+.loader{width:36px;height:36px;border:4px solid rgba(255,255,255,0.3);border-top:4px solid #FFD700;border-radius:50%;animation:spin 1s linear infinite;margin-top:15px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div id="splash">
+<svg width="200" height="300" viewBox="0 0 200 300" style="margin-bottom:10px"><path d="M60 20 C70 5 90 5 95 20 C100 30 95 40 80 45 L110 55 L130 80 L140 130 C150 150 160 180 140 210 C120 240 70 250 40 210 C20 180 30 140 60 100 L50 60 Z M140 190 C145 180 155 180 160 190 C165 200 155 210 140 205 Z" fill="black"/></svg>
+<div style="color:white;font-weight:900;font-size:22px">ossai75.ng</div>
+<div style="color:#FFD700;font-weight:900;font-size:13px">Pregnant Mothers Care App</div>
+<div class="loader"></div>
+<div style="color:white;font-size:10px;margin-top:10px;opacity:0.7">Loading... Tap if stuck</div>
+</div>
+
+<div id="home">
+<div class="ads top">ADS TOP 90px</div>
+<div class="marq topM"><b>🔥 EARN MAMACOIN ★ BABYCOIN ★ QUARTERCOIN ★ GROWTHCOIN ★ CHEASCOIN ★</b></div>
+<div class="logo">ossai75.ng<br><span style="font-size:14px;color:#FFD700">Pregnant Mothers Care App</span></div>
+<div class="btns">
+<button class="btn gold" onclick="openP('agreement')">CREATE FREE ACCOUNT</button>
+<button class="btn white" onclick="openP('login')">LOGIN TO YOUR ACCOUNT</button>
+</div>
+<div class="marq botM"><b>💜 COMPLETE TASKS TO EARN 10 MAMACOINS DAILY ★</b></div>
+<div class="ads bottom">ADS BOTTOM 90px</div>
+</div>
+
+<div id="agreement" class="page">
+<h2 style="color:white;text-align:center;margin:10px">USER AGREEMENT</h2>
+<div class="box">
+<p><b>ossai75.ng - 5 Coins System</b></p>
+<h3>MAMACOIN</h3><p>Daily mama care - water, rest, clinic. Up to 10 daily.</p>
+<h3>BABYCOIN</h3><p>Baby care - nutrition, vaccine, growth.</p>
+<h3>QUARTERCOIN</h3><p>90 days consistent = 1 Quartercoin for gift box.</p>
+<h3>GROWTHCOIN</h3><p>6 months active from pregnancy to birth. Most valuable.</p>
+<h3>CHEASCOIN</h3><p>Promotion coin - Invite friends, share status, cheer mamas.</p>
+<p><b>ALL COINS NA IN-APP POINTS ONLY. NO CASH, NOT CRYPTO.</b> We fit change value anytime.</p>
+<h3>BUSINESS PROTECTION</h3><p>• One account only. Multiple = ban.<br>• Real info only. Fake = ban.<br>• No cheat/hack. System go detect.<br>• No insult. Support mamas.<br>• We fit ban any account wey threaten business.<br>• Coins expire after 90 days inactive.</p>
+<h3>YOUR PROMOTION DUTY</h3><p>• Invite 2 friends = 5 CHEASCOIN<br>• Share status = 3 CHEASCOIN<br>• Testimony = 5 CHEASCOIN<br>• Cheer 3 mamas daily<br>• No spam or lie.</p>
+<h3>MEDICAL DISCLAIMER</h3><p>Tips na education only. Not hospital. Always see doctor. Emergency call hospital.</p>
+<h3>PRIVACY</h3><p>We collect name, email, tasks for Firebase Analytics to improve app. We no dey sell data.</p>
+<p><b>By clicking AGREE you accept all rules.</b></p>
+</div>
+<button class="agree" onclick="openP('register')">I AGREE - CONTINUE</button>
+<div style="color:#FFD700;text-align:center;font-weight:900" onclick="openP('home')">← Back</div>
+</div>
+
+<div id="register" class="page"><h2 style="color:white;text-align:center;margin:15px">Create Account</h2>
+<input id="rn" placeholder="Full Name"><input id="re" placeholder="Email"><input id="rp" type="password" placeholder="Password">
+<button class="agree" onclick="reg()">CREATE ACCOUNT</button>
+<div style="color:#FFD700;text-align:center;font-weight:900" onclick="openP('agreement')">← Back</div>
+</div>
+
+<div id="login" class="page"><h2 style="color:white;text-align:center;margin:15px">Login</h2>
+<input id="le" placeholder="Email"><input id="lp" type="password" placeholder="Password">
+<button class="agree" onclick="openP('dashboard')">LOGIN</button>
+<div style="color:#FFD700;text-align:center;font-weight:900" onclick="openP('home')">← Back</div>
+</div>
+
+<div id="dashboard" class="page"><h2 id="wel" style="color:white;text-align:center;margin:15px">Welcome!</h2>
+<div class="box"><b>Your 5 Coins</b><br>MAMACOIN: 10 | BABYCOIN: 5 | QUARTERCOIN: 1 | GROWTHCOIN: 1 | CHEASCOIN: 5</div>
+<button class="agree" onclick="alert('Tasks next!')">START TASKS</button>
+<div style="color:#FFD700;text-align:center;font-weight:900" onclick="openP('home')">Log Out</div>
+</div>
+
+<script>
+function hide(){document.getElementById('splash').style.display='none';document.getElementById('home').style.display='block';}
+setTimeout(hide,2200);
+document.getElementById('splash').onclick=hide;
+function openP(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));document.getElementById('home').style.display=id=='home'?'block':'none';if(id!='home')document.getElementById(id).classList.add('on');}
+function reg(){let n=document.getElementById('rn').value;if(!n){alert('Enter name');return;}document.getElementById('wel').innerText='Welcome, '+n+'!';openP('dashboard');}
+</script>
+</body>
+                                                                                 </html>
