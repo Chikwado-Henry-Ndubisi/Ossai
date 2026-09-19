@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#4A2D6E;width:100vw;height:100vh;overflow:hidden;font-family:Arial, sans-serif}
+.bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1}
+.bg img{width:100vw;height:100vh;object-fit:cover;display:block}
+.ads{position:fixed;left:0;width:100vw;height:90px;background:white;z-index:10;display:flex;align-items:center;justify-content:center;font-weight:900}
+.ads-top{top:0}.ads-bot{bottom:0}
+.marq{position:fixed;left:0;width:100vw;height:65px;z-index:11;display:flex;align-items:center;overflow:hidden;white-space:nowrap}
+.marq-top{top:90px}.marq-bot{bottom:90px}
+.marq b{color:#FFD700;font-size:46px;font-weight:900;animation:slide 20s linear infinite;padding-left:100%}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.content{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:12;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:13vh}
+.content h1{color:white;font-size:58px;font-weight:900;text-shadow:0 3px 10px black}
+.content p{color:#FFD700;font-size:20px;font-weight:900;margin-bottom:25px;text-shadow:0 2px 8px black}
+.btns{display:flex;flex-direction:column;gap:22px}
+.btn{width:92vw;max-width:450px;height:85px;border-radius:50px;border:none;font-weight:900;font-size:30px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+.w{background:white;color:#4A2D6E}.o{background:rgba(255,255,255,0.15);color:white;border:4px solid white;backdrop-filter:blur(8px)}
+#splash{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#4A2D6E;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:18vh;transition:opacity 0.8s}
+#splash img{position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover}
+#splash .t{position:relative;z-index:2;text-align:center}
+#splash h1{color:white;font-size:64px;font-weight:900}
+#splash p{color:#FFD700;font-size:22px;font-weight:900}
+.loader{margin:20px auto 0;width:50px;height:50px;border:4px solid rgba(255,255,255,0.3);border-top:4px solid white;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div id="splash">
+<img src="icon.png">
+<div class="t"><h1>ossai75.ng</h1><p>Pregnant Mothers Care App</p><div class="loader"></div></div>
+</div>
+
+<div class="bg"><img src="icon.png"></div>
+<div class="ads ads-top">ADS TOP 90px WHITE INTACT</div>
+
+<!-- SAFE TOP TEXT - NO AD WORD, NO BAN -->
+<div class="marq marq-top" id="marqTop"><b>🔥 OSSAI75.NG ★ NIGERIA SPECIAL BONUS ★ COMPLETE TASKS TO EARN MAMACOIN & BABYCOIN ★</b></div>
+
+<div class="content">
+<h1>ossai75.ng</h1>
+<p>Pregnant Mothers Care App</p>
+<div class="btns">
+<button class="btn w">Create Account</button>
+<button class="btn o">Login</button>
+</div>
+</div>
+
+<!-- SAFE BOTTOM TEXT - NO AD WORD -->
+<div class="marq marq-bot"><b>💜 COMPLETE DAILY TASKS TO EARN UP TO 10 MAMACOINS ★ SAFE & VERIFIED TASKS ★</b></div>
+<div class="ads ads-bot">ADS BOTTOM 90px WHITE INTACT</div>
+
+<script>
+// Splash
+setTimeout(()=>{let s=document.getElementById('splash');s.style.opacity='0';setTimeout(()=>s.style.display='none',800)},3500);
+
+// SAFE COUNTRY PRICE - NO "ADS" WORD INSIDE
+fetch('https://ipapi.co/json/').then(r=>r.json()).then(d=>{
+let el=document.querySelector('#marqTop b');
+if(d.country_code==='NG'){
+el.innerHTML='🔥 NIGERIA SPECIAL BONUS ★ MAMACOIN 2000PTS = ₦7000 ★ COMPLETE TASKS TO EARN ★';
+}else if(d.country_code==='US'){
+el.innerHTML='🔥 MAMACOIN 2000PTS = $9 BONUS ★ COMPLETE TASKS TO EARN ★';
+}else if(d.country_code==='GB'){
+el.innerHTML='🔥 MAMACOIN 2000PTS = £6 BONUS ★ COMPLETE TASKS TO EARN ★';
+}else if(d.country_code==='GH'){
+el.innerHTML='🔥 MAMACOIN 2000PTS = 8 GHS BONUS ★ COMPLETE TASKS TO EARN ★';
+}
+}).catch(()=>{});
+</script>
+
+</body>
+                                                                                              </html>
