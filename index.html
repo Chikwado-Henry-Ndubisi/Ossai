@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#f5f3ff;min-height:100vh}
+.splash{background:linear-gradient(135deg,#4A148C,#8E24AA);height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;position:fixed;width:100%;z-index:100;transition:0.5s}
+.splash.hide{transform:translateY(-100%)}
+.logo{width:90px;height:90px;background:white;border-radius:22px;display:flex;align-items:center;justify-content:center;color:#6A1B9A;font-weight:900;font-size:18px;margin-bottom:15px}
+.btn{padding:16px;width:85%;border-radius:30px;border:none;font-weight:bold;margin:8px;font-size:16px}
+.btn-white{background:white;color:#6A1B9A}
+.btn-outline{background:transparent;color:white;border:2px solid white}
+.app{padding:20px;position:relative;overflow:hidden}
+.watermark{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%) rotate(-20deg);font-size:90px;opacity:0.05;font-weight:900;pointer-events:none}
+.card{background:white;border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+</style>
+</head>
+<body>
+<div class="splash" id="splash">
+<div class="logo">ossai75</div>
+<h1>ossai75.ng</h1>
+<p style="opacity:0.9;margin:10px">Pregnant Mothers Care App</p>
+<div style="height:30px"></div>
+<button class="btn btn-white" onclick="enter()">Create Account</button>
+<button class="btn btn-outline" onclick="enter()">Login</button>
+</div>
+
+<div class="app">
+<div class="watermark">ossai75</div>
+<h3 style="color:#4A148C">Welcome Mama 🤰</h3>
+<div class="card"><b>Week 12</b><br>Baby size: Lime 🍋<br><small>Today tip: Drink water</small></div>
+<div class="card"><b>Mamacoin Wallet</b><br>0 / 2000 pts<br>2000pts = ₦7000 (Max 10)</div>
+<div class="card"><b>Quote Page</b><br>Read 4 quotes to unlock 10 ads<br><button style="background:#6A1B9A;color:white;border:none;padding:10px 20px;border-radius:20px;margin-top:10px" onclick="alert('Open Quote Page - 4 quotes show here')">Open Quotes</button></div>
+<div class="card"><b>Cheerscoin</b><br>Bonus coin after 3 years + new pregnancy</div>
+</div>
+
+<script>
+function enter(){document.getElementById('splash').classList.add('hide')}
+setTimeout(()=>{/* auto stay for review */},1000)
+</script>
+</body>
+  </html>
