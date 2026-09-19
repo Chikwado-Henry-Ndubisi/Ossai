@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>ossai75.ng - Pregnant Mothers Care</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#5B2E9D;width:100vw;height:100vh;overflow:hidden;font-family:Arial,sans-serif}
+.bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1}
+.bg img{width:100vw;height:100vh;object-fit:cover;display:block}
+.ads{position:fixed;left:0;width:100vw;height:85px;background:#fff;z-index:20;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-size:14px}
+.ads-top{top:0}.ads-bot{bottom:0}
+.marq{position:fixed;left:0;width:100vw;height:60px;z-index:21;display:flex;align-items:center;overflow:hidden;white-space:nowrap;background:rgba(0,0,0,0.45)}
+.marq-top{top:85px}.marq-bot{bottom:85px}
+.marq b{color:#FFD700;font-size:28px;font-weight:900;animation:slide 10s linear infinite;padding-left:100%}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.content{position:fixed;top:145px;left:0;width:100vw;height:calc(100vh - 290px);z-index:12;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.logo-name{color:white;font-size:38px;font-weight:900;text-shadow:0 3px 12px black}
+.sub{color:#FFD700;font-size:16px;font-weight:900;margin:8px 0 28px}
+.btns{display:flex;flex-direction:column;gap:22px;align-items:center}
+.btn{background:none!important;border:none!important;font-weight:900;font-size:21px;cursor:pointer;text-shadow:0 3px 12px black;padding:10px 20px;letter-spacing:0.5px}
+.btn-gold{color:#FFD700}.btn-purple{color:#fff}
+.page{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:40;background:#5B2E9D;display:none;overflow-y:auto;padding:15px}
+.page.active{display:block}
+.page-header{color:white;font-size:24px;font-weight:900;text-align:center;margin:15px 0}
+.agreement-box{background:white;border-radius:16px;padding:18px;color:#222;line-height:1.55;max-height:62vh;overflow-y:auto;text-align:left}
+.agreement-box h3{color:#5B2E9D;margin:16px 0 6px;font-size:15px;text-transform:uppercase}
+.agreement-box p,.agreement-box li{font-size:13px;margin-bottom:7px}
+.agreement-box ul{padding-left:16px}
+.agree-btn{width:92%;height:60px;background:#FFD700;color:#5B2E9D;border:none;border-radius:50px;font-weight:900;font-size:17px;margin:15px auto;display:block;cursor:pointer}
+.back{color:#FFD700;text-align:center;margin-top:10px;font-weight:900;cursor:pointer;font-size:13px}
+.input-box{width:90%;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.input-box input{width:100%;height:56px;border-radius:28px;border:none;padding:0 18px;font-size:15px;font-weight:700}
+.reg-btn{width:100%;height:60px;background:#FFD700;color:#5B2E9D;border:none;border-radius:50px;font-weight:900;font-size:18px;cursor:pointer;margin-top:8px}
+.dash-card{background:white;border-radius:16px;padding:14px;margin:8px auto;width:94%;color:#5B2E9D}
+.coins{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.coin-box{background:#5B2E9D;color:white;padding:10px;border-radius:12px;text-align:center}
+.coin-box b{color:#FFD700;font-size:20px;display:block}
+.coin-box span{font-size:10px}
+#splash{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#5B2E9D;z-index:100;display:flex;align-items:center;justify-content:center;flex-direction:column}
+#splash img{position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;opacity:0.95}
+#splash .t{position:relative;z-index:2;text-align:center}
+#splash h1{color:white;font-size:42px;font-weight:900;text-shadow:0 3px 10px black}
+#splash p{color:#FFD700;font-size:18px;font-weight:900;text-shadow:0 2px 8px black}
+.loader{margin:18px auto 0;width:42px;height:42px;border:4px solid rgba(255,255,255,0.3);border-top:4px solid #FFD700;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div id="splash" onclick="hideSplash()">
+<img src="icon.png" onerror="this.style.display='none'">
+<div class="t"><h1>ossai75.ng</h1><p>Pregnant Mothers Care App</p><div class="loader"></div><p style="font-size:11px;margin-top:10px;color:white;opacity:0.8">Tap to continue</p></div>
+</div>
+
+<div id="home">
+<div class="bg"><img src="icon.png" onerror="this.style.display='none'"></div>
+<div class="ads ads-top">ADS TOP 90px</div>
+<div class="marq marq-top"><b>🔥 EARN MAMACOIN ★ BABYCOIN ★ QUARTERCOIN ★ GROWTHCOIN ★ CHEASCOIN ★</b></div>
+<div class="content">
+<div class="logo-name">ossai75.ng</div>
+<div class="sub">Pregnant Mothers Care App</div>
+<div class="btns">
+<button class="btn btn-gold" onclick="openPage('agreement')">CREATE FREE ACCOUNT</button>
+<button class="btn btn-purple" onclick="openPage('login')">LOGIN TO YOUR ACCOUNT</button>
+</div>
+</div>
+<div class="marq marq-bot"><b>💜 COMPLETE DAILY TASKS TO EARN UP TO 10 MAMACOINS ★ PROMOTE & EARN CHEASCOIN ★</b></div>
+<div class="ads ads-bot">ADS BOTTOM 90px</div>
+</div>
+
+<div id="agreement" class="page">
+<div class="page-header">USER AGREEMENT & BUSINESS TERMS</div>
+<div class="agreement-box">
+<p><b>Effective: 2026 | ossai75.ng | Read before you agree.</b></p>
+<h3>1. ABOUT US</h3>
+<p>ossai75.ng is pregnancy care support for Nigerian mothers. We give education, daily tasks, community & rewards. We are NOT hospital. Always see doctor.</p>
+<h3>2. OUR 5 COIN SYSTEM</h3>
+<p><b>MAMACOIN:</b> Daily mama care tasks - water, rest, reading, clinic. Up to 10/day.<br>
+<b>BABYCOIN:</b> Baby care knowledge - nutrition, vaccine, growth.<br>
+<b>QUARTERCOIN:</b> Bonus for 90 days consistent. No 7 days break. For quarterly gift.<br>
+<b>GROWTHCOIN:</b> Long term 6 months+ active from pregnancy to delivery. Most valuable.<br>
+<b>CHEASCOIN (Cheer & Share):</b> Promotion coin. Earn by inviting friends, sharing status, cheering mamas, testimony. This drives our business growth.<br><br>
+<b>ALL COINS NA IN-APP POINTS ONLY. NO CASH VALUE, NOT CRYPTO, NOT NAIRA unless we announce official redemption. We fit change value anytime for business safety.</b></p>
+<h3>3. BUSINESS PROTECTION RULES</h3>
+<ul>
+<li>One person = One account. Multiple = ban, coins lost.</li>
+<li>Real name/email only. Fake = instant ban.</li>
+<li>No cheat, auto-click, hack. System go detect.</li>
+<li>No insult/fight. Support other mamas.</li>
+<li>No false medical advice. Only personal experience.</li>
+<li>We fit suspend/ban any account wey threaten business without refund.</li>
+<li>We fit update tasks, coins, close promo anytime.</li>
+<li>Coins expire after 90 days inactive.</li>
+</ul>
+<h3>4. YOUR PROMOTION DUTY (TO EARN CHEASCOIN)</h3>
+<ul>
+<li>Invite at least 2 pregnant friends after register (earn 5 Cheascoin each).</li>
+<li>Share daily completion for WhatsApp Status = 3 Cheascoin.</li>
+<li>Post honest testimony = 5 Cheascoin.</li>
+<li>Cheer 3 mamas daily in community.</li>
+<li>Join weekly #MamaCareChallenge.</li>
+<li>NO spam, NO lie. Promote with honesty. False promo = ban.</li>
+</ul>
+<h3>5. MEDICAL DISCLAIMER</h3>
+<p>Tips na education only. Not diagnosis. We no dey liable for health decision. Always consult doctor/midwife. Emergency = call hospital, no be app.</p>
+<h3>6. DATA & PRIVACY</h3>
+<p>We collect name, email, task completion, device for Analytics (Firebase - firebase.google.com) to improve app. We no dey sell data. We fit show ads to keep app free. You allow notification for tips.</p>
+<h3>7. LIABILITY</h3>
+<p>Under Nigerian law, ossai75.ng owner/team NOT liable for any loss, damage, pregnancy outcome from using app or coins. Use at your discretion.</p>
+<h3>8. FINAL AGREEMENT</h3>
+<p>By clicking I AGREE, you confirm you be 18+ or pregnant with guardian consent, you don read & understand, you go follow rules, you go honestly promote business, you understand coins no get cash value unless redeemed, and you accept we fit modify terms with in-app notice.</p>
+</div>
+<button class="agree-btn" onclick="openPage('register')">I HAVE READ & I AGREE</button>
+<div class="back" onclick="openPage('home')">← Back to Home</div>
+</div>
+
+<div id="register" class="page">
+<div class="page-header">Create Free Account</div>
+<div class="input-box">
+<input type="text" id="rName" placeholder="Full Name (Real)">
+<input type="email" id="rEmail" placeholder="Email">
+<input type="password" id="rPass" placeholder="Password min 6">
+<button class="reg-btn" onclick="doRegister()">CREATE MY ACCOUNT</button>
+<div class="back" onclick="openPage('agreement')">← Back</div>
+</div>
+</div>
+
+<div id="login" class="page">
+<div class="page-header">Login</div>
+<div class="input-box">
+<input type="email" id="lEmail" placeholder="Email">
+<input type="password" id="lPass" placeholder="Password">
+<button class="reg-btn" onclick="doLogin()">LOGIN</button>
+<div class="back" onclick="openPage('home')">← Back to Home</div>
+</div>
+</div>
+
+<div id="dashboard" class="page">
+<div class="page-header" id="welcomeText">Welcome!</div>
+<div class="dash-card"><h2>💜 Your 5 Coins</h2>
+<div class="coins">
+<div class="coin-box"><b>10</b><span>MAMACOIN</span></div>
+<div class="coin-box"><b>5</b><span>BABYCOIN</span></div>
+<div class="coin-box"><b>1</b><span>QUARTERCOIN</span></div>
+<div class="coin-box"><b>1</b><span>GROWTHCOIN</span></div>
+<div class="coin-box" style="grid-column: span 2;"><b>5</b><span>CHEASCOIN - Share & Earn</span></div>
+</div></div>
+<div class="dash-card"><h2>🎯 Today Tasks</h2><p style="font-size:12px;margin-top:6px">• Read Tip = 2 MAMA<br>• Invite Friend = 5 CHEAS<br>• Baby Lesson = 2 BABY<br>• 30 Days Active = 1 GROWTH<br>• 90 Days Streak = 1 QUARTER</p>
+<button class="agree-btn" onclick="alert('Tasks coming soon - you don finish app core!')">START TASKS</button>
+</div>
+<div class="back" onclick="openPage('home')">Log Out</div>
+</div>
+
+<script>
+// FIXED SPLASH - must hide even if Firebase fails
+function hideSplash(){
+ let s=document.getElementById('splash');
+ s.style.transition='opacity 0.6s';
+ s.style.opacity='0';
+ setTimeout(()=>{s.style.display='none';},600);
+}
+// Auto hide after 2.5 sec + backup 4 sec
+setTimeout(hideSplash,2500);
+setTimeout(hideSplash,4000);
+
+function openPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('home').style.display = id==='home' ? 'block' : 'none';
+ if(id!=='home') document.getElementById(id).classList.add('active');
+ window.scrollTo(0,0);
+}
+function doRegister(){
+ const name=document.getElementById('rName').value.trim();
+ const email=document.getElementById('rEmail').value.trim();
+ const pass=document.getElementById('rPass').value.trim();
+ if(!name||!email||!pass){alert('Fill all');return;}
+ if(pass.length<6){alert('Password 6+');return;}
+ localStorage.setItem('ossai_user', JSON.stringify({name,email}));
+ document.getElementById('welcomeText').innerText='Welcome, '+name+'!';
+ openPage('dashboard');
+ try{ 
+  if(window.gtag) gtag('event','user_registered');
+ }catch(e){}
+}
+function doLogin(){
+ const email=document.getElementById('lEmail').value.trim();
+ const pass=document.getElementById('lPass').value.trim();
+ if(!email||!pass){alert('Fill email & password');return;}
+ let u=localStorage.getItem('ossai_user');
+ if(u){let d=JSON.parse(u); document.getElementById('welcomeText').innerText='Welcome, '+d.name+'!';}
+ openPage('dashboard');
+}
+// Load Firebase in background - no block
+window.addEventListener('load', ()=>{
+ try{
+  let s=document.createElement('script');s.type='module';
+  s.textContent=`
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
+  const cfg={apiKey:"AIzaSyAlMlmqWlGgBdo9uVKP5wyB7ujmn3-XGCQ",authDomain:"ossai75-ng.firebaseapp.com",projectId:"ossai75-ng",storageBucket:"ossai75-ng.firebasestorage.app",messagingSenderId:"152745254453",appId:"1:152745254453:web:ec4d5080f79b7105b59b7c",measurementId:"G-DQY33E06TH"};
+  try{const app=initializeApp(cfg);const an=getAnalytics(app);logEvent(an,'app_open');}catch(e){console.log('firebase bg',e)}
+  `;
+  document.head.appendChild(s);
+ }catch(e){console.log(e)}
+});
+</script>
+</body>
+  </html>
