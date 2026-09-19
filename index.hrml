@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#4A148C;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:sans-serif;overflow:hidden;background:linear-gradient(135deg,#4A148C,#7B1FA2)}
+.main{width:100%;text-align:center;padding:90px 0}
+.logo-big{width:650px;height:650px;max-width:92vw;max-height:92vw;background:white;border-radius:75px;margin:0 auto;display:flex;align-items:center;justify-content:center;box-shadow:0 25px 80px rgba(0,0,0,0.6)}
+.logo-big img{width:92%;height:92%;object-fit:contain}
+h1{font-size:72px;font-weight:900;color:white;margin:22px 0 6px;letter-spacing:1px}
+.sub{font-size:34px;font-weight:900;color:white;margin-bottom:28px}
+.btn{width:92%;max-width:480px;padding:28px;border-radius:60px;border:none;font-size:34px;font-weight:900;margin:12px auto;display:block}
+.white{background:white;color:#6A1B9A}
+.outline{border:4px solid white;color:white;background:transparent}
+.top,.bot{position:fixed;left:0;width:100%;white-space:nowrap;overflow:hidden;z-index:99}
+.top{top:0;padding:22px 0;background:rgba(255,255,255,0.22)}
+.bot{bottom:0;padding:22px 0;background:rgba(0,0,0,0.5)}
+.top b,.bot b{font-size:36px;font-weight:900;color:white;display:inline-block;animation:slide 40s linear infinite}
+@keyframes slide{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+</style>
+</head>
+<body>
+<div class="top"><b>🔥 OSSAI75.NG ★ PREGNANT MOTHERS CARE ★ MAMACOIN 2000PTS = ₦7000 ★ BABYCOIN LOCKED ★ CHEERSCOIN BONUS AFTER 3 YEARS ★ 🔥</b></div>
+<div class="main">
+<div class="logo-big"><img src="icon.png"></div>
+<h1>ossai75.ng</h1>
+<div class="sub">Pregnant Mothers Care App</div>
+<button class="btn white">Create Account</button>
+<button class="btn outline">Login</button>
+</div>
+<div class="bot"><b>💜 WATCH ADS 6 ADS = 1 POINT ★ VERIFIED 3 ADS = 1 POINT ★ MAX 10 MAMACOINS ★ 4 QUOTES = 10 ADS 💜</b></div>
+</body>
+</html>
