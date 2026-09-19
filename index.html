@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#5D3A8E;margin:0;font-family:sans-serif;overflow:hidden;width:100vw;height:100vh}
+
+/* SPLASH - FULL SCREEN COVER NO FRAME */
+#splash{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#5D3A8E;z-index:5000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.8s}
+#splash img{width:100vw;height:100vh;max-width:100vw;max-height:100vh;object-fit:contain;background:transparent !important;border:none !important;box-shadow:none !important;padding:0;margin:0}
+#splash .txt{position:absolute;bottom:18%;display:flex;flex-direction:column;align-items:center}
+#splash h1{color:white;font-size:64px;font-weight:900;font-family:Arial Black,sans-serif}
+#splash p{color:#E9D5FF;font-size:24px;font-weight:900;margin-top:8px}
+
+/* ADS - WHITE ONLY */
+.ads{position:fixed;left:0;width:100vw;height:90px;background:#FFFFFF;z-index:1000;display:flex;align-items:center;justify-content:center}
+.ads-top{top:0}
+.ads-bot{bottom:0}
+.ads b{color:#000;font-size:10px;font-weight:900}
+
+/* GOLD MOVING TEXTS INSIDE LOGO - 55PX */
+.marq{position:fixed;left:0;width:100vw;height:70px;background:transparent;z-index:999;display:flex;align-items:center;overflow:hidden;white-space:nowrap}
+.marq-top{top:90px}
+.marq-bot{bottom:90px}
+.marq b{color:#FFD700;font-size:55px;font-weight:900;animation:slide 20s linear infinite;padding-left:100%}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+/* MAIN - LOGO COVER WHOLE SCREEN NO FRAME SIDE */
+.center{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#5D3A8E;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:160px 0 0 0}
+.center .logo-wrap{width:100vw;height:68vh;display:flex;align-items:center;justify-content:center;background:#5D3A8E;margin:0;padding:0;border:none}
+.center .logo-wrap img{width:98vw;height:68vh;object-fit:contain;background:transparent !important;border:none !important;box-shadow:none !important;outline:none !important;margin:0}
+.center h1{color:white;font-size:56px;font-weight:900;font-family:Arial Black,sans-serif;margin-top:5px}
+.center p{color:#E9D5FF;font-size:20px;font-weight:900;margin-bottom:18px}
+
+/* BUTTONS BIG BIG 65PX - NO REPEAT */
+.btns{display:flex;flex-direction:column;align-items:center;gap:18px;width:100vw}
+.btn{width:88vw;max-width:400px;height:65px;border-radius:50px;border:none;font-weight:900;font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.w{background:white;color:#5D3A8E}
+.o{background:transparent;color:white;border:4px solid white}
+</style>
+</head>
+<body>
+
+<div id="splash">
+<img src="icon.png">
+<div class="txt">
+<h1>ossai75.ng</h1>
+<p>Pregnant Mothers Care App</p>
+</div>
+</div>
+
+<div class="ads ads-top"><b>ADS TOP 90px</b></div>
+<div class="marq marq-top"><b>🔥 OSSAI75.NG ★ MAMACOIN 2000PTS = ₦7000 ★ BABYCOIN LOCKED ★ CHEERSCOIN AFTER 3 YEARS ★</b></div>
+
+<div class="center">
+<div class="logo-wrap">
+<img src="icon.png">
+</div>
+<h1>ossai75.ng</h1>
+<p>Pregnant Mothers Care App</p>
+<div class="btns">
+<button class="btn w" onclick="location.href='create-account.html'">Create Account</button>
+<button class="btn o" onclick="location.href='login.html'">Login</button>
+</div>
+</div>
+
+<div class="marq marq-bot"><b>💜 WATCH 6 ADS = 1 POINT ★ VERIFIED 3 ADS = 1 POINT ★ MAX 10 MAMACOINS ★</b></div>
+<div class="ads ads-bot"><b>ADS BOTTOM 90px</b></div>
+
+<script>
+setTimeout(()=>{let s=document.getElementById('splash');s.style.opacity='0';setTimeout(()=>{s.style.display='none'},800)},3500);
+</script>
+</body>
+  </html>
