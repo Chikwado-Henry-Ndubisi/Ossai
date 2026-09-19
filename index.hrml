@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#4A148C}
+body{font-family:sans-serif;overflow:hidden}
+/* SPLASH X3 BIG */
+#splash{position:fixed;inset:0;z-index:999;background:linear-gradient(135deg,#4A148C,#8E24AA);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:1s}
+#splash.hide{transform:translateY(-100%)}
+.s-logo{width:98vw;height:98vw;max-width:800px;max-height:800px;background:white;border-radius:80px;display:flex;align-items:center;justify-content:center}
+.s-logo img{width:90%;height:90%;object-fit:contain}
+.s-text{font-size:82px;font-weight:900;color:white;margin-top:15px}
+.s-sub{font-size:38px;font-weight:900;color:white}
+
+/* MAIN - LOGO X2-3 BIGGER NOW + TEXTS BIGGER */
+#main{position:fixed;inset:0;background:linear-gradient(135deg,#4A148C,#8E24AA);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 0}
+.center-logo{width:96vw;height:96vw;max-width:760px;max-height:760px;background:white;border-radius:90px;display:flex;align-items:center;justify-content:center;box-shadow:0 30px 90px rgba(0,0,0,0.6)}
+.center-logo img{width:88%;height:88%;object-fit:contain}
+h1{font-size:78px;font-weight:900;color:white;margin:20px 0 5px;letter-spacing:1px}
+.sub{font-size:38px;font-weight:900;color:white;margin-bottom:30px}
+.btn{width:92vw;max-width:500px;padding:32px;border-radius:70px;border:none;font-size:36px;font-weight:900;margin:12px}
+.white{background:white;color:#6A1B9A}
+.out{border:5px solid white;color:white;background:transparent}
+
+/* ADS SPACY + SLOW */
+.marq{position:fixed;left:0;width:100%;overflow:hidden;white-space:nowrap;z-index:50}
+.top{top:0;padding:36px 0;background:rgba(255,255,255,0.22)}
+.bot{bottom:0;padding:36px 0;background:rgba(0,0,0,0.55)}
+.marq b{font-size:52px;font-weight:900;color:white;display:inline-block;animation:move 55s linear infinite}
+@keyframes move{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+</style>
+</head>
+<body>
+<div id="splash">
+<div class="s-logo"><img src="icon.png"></div>
+<div class="s-text">ossai75.ng</div>
+<div class="s-sub">Pregnant Mothers Care App</div>
+</div>
+<div id="main">
+<div class="marq top"><b>🔥 OSSAI75.NG ★ PREGNANT MOTHERS CARE ★ MAMACOIN 2000PTS = ₦7000 ★ BABYCOIN LOCKED ★ CHEERSCOIN BONUS AFTER 3 YEARS ★ 🔥</b></div>
+<div class="center-logo"><img src="icon.png"></div>
+<h1>ossai75.ng</h1>
+<div class="sub">Pregnant Mothers Care App</div>
+<button class="btn white">Create Account</button>
+<button class="btn out">Login</button>
+<div class="marq bot"><b>💜 WATCH ADS 6 ADS = 1 POINT ★ VERIFIED 3 ADS = 1 POINT ★ MAX 10 MAMACOINS ★ 4 QUOTES = 10 ADS 💜</b></div>
+</div>
+<script>setTimeout(()=>document.getElementById('splash').classList.add('hide'),3000)</script>
+</body>
+</html>
