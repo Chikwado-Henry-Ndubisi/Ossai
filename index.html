@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+html,body{background:#4A148C;height:100%;margin:0}
+body{background:linear-gradient(135deg,#4A148C,#6A1B9A,#8E24AA);min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+/* FIX WHITE FLASH SPLASH */
+#first{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#4A148C,#8E24AA);z-index:100;display:flex;align-items:center;justify-content:center;transition:opacity 0.8s}
+#first.hide{opacity:0;pointer-events:none}
+.center{text-align:center;z-index:5;width:100%;display:flex;flex-direction:column;align-items:center}
+.logo-big{width:380px;height:380px;background:white;border-radius:45px;display:flex;align-items:center;justify-content:center;box-shadow:0 25px 80px rgba(0,0,0,0.5)}
+.logo-big img{width:88%;height:88%;object-fit:contain}
+h1{font-size:64px;font-weight:900;color:white;margin:22px 0 8px;letter-spacing:1px}
+.sub{font-size:32px;font-weight:800;color:white;margin-bottom:40px}
+.btn{width:92%;max-width:460px;padding:28px;border-radius:50px;border:none;font-size:28px;font-weight:900;margin:14px}
+.white{background:white;color:#6A1B9A}
+.out{border:4px solid white;color:white;background:transparent}
+/* SLOW BOLD MOVING TEXT X15 */
+.marq{position:fixed;width:100%;z-index:20;overflow:hidden;white-space:nowrap;padding:26px 0;left:0}
+.top{top:0;background:rgba(255,255,255,0.20)}
+.bot{bottom:0;background:rgba(0,0,0,0.45)}
+.marq span{display:inline-block;font-size:44px;font-weight:900;color:white;letter-spacing:1.5px;animation:slow 25s linear infinite}
+@keyframes slow{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
+</style>
+</head>
+<body>
+<div id="first"><div style="color:white;font-size:30px;font-weight:900">ossai75.ng loading...</div></div>
+
+<div class="marq top"><span>🔥 OSSAI75.NG ★ PREGNANT MOTHERS CARE ★ MAMACOIN 2000PTS = ₦7000 ★ BABYCOIN LOCKED ★ CHEERSCOIN BONUS ★ 🔥</span></div>
+
+<div class="center">
+<div class="logo-big"><img src="icon.png"></div>
+<h1>ossai75.ng</h1>
+<div class="sub">Pregnant Mothers Care App</div>
+<button class="btn white">Create Account</button>
+<button class="btn out">Login</button>
+</div>
+
+<div class="marq bot"><span>💜 WATCH ADS ORDINARY 6 ADS = 1 POINT ★ PREGNANT VERIFIED 3 ADS = 1 POINT ★ MAX 10 MAMACOINS ★ 4 QUOTES = 10 ADS 💜</span></div>
+
+<script>
+// Fix first splash flash
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('first').classList.add('hide')},400)})
+</script>
+</body>
+  </html>
