@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#4A2D6E;font-family:Arial Black,Arial;color:white;overflow:hidden}
+#splash{position:fixed;inset:0;background:#4A2D6E;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+#splash video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+#splash img{width:120px;height:120px;border-radius:50%;margin-bottom:12px;object-fit:cover;border:3px solid #FFD700;position:relative;z-index:2}
+#splash .st{position:relative;z-index:2;text-align:center;background:rgba(74,45,110,0.55);padding:16px 22px;border-radius:16px;margin-top:10px}
+.btn{background:none;border:none;font-weight:900;font-size:30px;cursor:pointer;text-shadow:0 3px 10px #000;font-family:Arial Black;padding:10px}
+.btn-gold{color:#FFD700}.btn-purple{color:#fff}
+.page{display:none;position:fixed;inset:0;background:#4A2D6E;z-index:60;overflow:auto;padding:12px}
+.page.on{display:block}
+.agree-box{background:#fff;color:#222;border-radius:16px;padding:14px;font-family:Arial;font-size:13px;line-height:1.6;max-height:60vh;overflow:auto}
+.agree{width:92%;height:54px;background:#FFD700;color:#4A2D6E;border:none;border-radius:50px;font-weight:900;font-size:16px;margin:10px auto;display:block;font-family:Arial Black;cursor:pointer}
+input,textarea,select{width:100%;min-height:52px;border-radius:26px;border:none;padding:12px 16px;margin:6px 0;font-weight:700;font-family:Arial}
+.back{color:#FFD700;text-align:center;font-weight:900;margin-top:8px;cursor:pointer}
+.feed-card{background:#fff;color:#222;border-radius:12px;padding:10px;margin:8px 0;font-family:Arial}
+.earn-bar{background:#fff;color:#222;border-radius:10px;padding:8px;text-align:center;font-family:Arial;font-size:12px;margin:8px 0;line-height:1.5}
+#home{position:fixed;top:0;left:0;width:100vw;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:10}
+</style>
+</head>
+<body>
+
+<div id="splash" onclick="hideSplash()">
+<video id="introVideo" autoplay muted loop playsinline><source src="intro.mp4" type="video/mp4"></video>
+<img src="icon.png" onerror="this.style.display='none'" id="splashIcon">
+<div class="st">
+<h1 style="font-size:40px">ossai75</h1>
+<p style="color:#FFD700;margin:6px 0">Mama Video Music & Market</p>
+<p style="font-size:12px;margin-top:10px;background:rgba(255,255,255,0.2);padding:8px 16px;border-radius:20px">TAP ANYWHERE TO CONTINUE</p>
+</div>
+</div>
+
+<div id="home">
+<div style="background:rgba(0,0,0,0.4);width:100%;padding:10px;position:absolute;top:0;text-align:center;font-size:12px;z-index:11">ADS TOP - Banner 70px - Support free app</div>
+<h1 style="font-size:38px;margin-top:40px">ossai75</h1>
+<p style="color:#FFD700;margin:8px 0 30px">Video Music Quote & Market</p>
+<button class="btn btn-gold" onclick="openP('agreement')">CREATE FREE ACCOUNT</button>
+<button class="btn btn-purple" onclick="openP('login')" style="margin-top:16px">LOGIN</button>
+<div style="background:rgba(0,0,0,0.4);width:100%;padding:10px;position:absolute;bottom:0;text-align:center;font-size:12px;z-index:11">ADS BOTTOM - Banner 70px</div>
+</div>
+
+<div id="agreement" class="page"><h2 style="text-align:center">USER AGREEMENT</h2><div class="agree-box"><p style="text-align:center;font-weight:900;color:#4A2D6E">ossai75 - Video Music Quote & Market - Safe for AdMob</p><p><b>1. ABOUT:</b> Free social platform for mothers to share video music quotes, private diary, Market with KYC.</p><p><b>2. RULES:</b> Upload videos original, comment respectful, Seller KYC full name matching bank required unlimited products, Referral ordinary invite 6 verified=boost 2x, Verified invite verified=discount, Diary private only you.</p><p><b>3. EARNINGS - Apart from diary:</b> Post 0.0001 MAMACOIN, Comment 0.0001, Share 0.0002, Watch Music 0.0002, Watch Quote 0.0002, Bonus 0.0006 optional rewarded no interstitial. Verified 2x: Post 0.0002, Comment 0.0002, Share 0.0004, Music 0.0004, Quote 0.0004, Bonus 0.0012. Level 1-50pts=Level1 reset 0, Level50=1 MAMACOIN bonus unlimited. 1 MAMACOIN=10000 micro.</p><p><b>4. MAMACOIN:</b> Shop Market with MAMACOIN+delivery. Withdraw: 1 MAMACOIN=75 local currency units displayed local currency. Min 50. 24-72hrs. Fee 1+5% displayed.</p><p><b>5. ADS COMPLIANT:</b> Banner top/bottom 60s no reward never required click. Interstitial natural: Music 1+1, Quote 1+1, Comments 2+1, Posts 2+1, Share 1+1 with 60s min interval skippable never incentivized never block upload. Bonus only rewarded optional no interstitial 5s close. Upload always free never requires ad.</p><p><b>6. PRIVACY:</b> Mama Diary test result & personal diaries private encrypted only owner sees never for ads.</p></div><button class="agree" onclick="openP('register')">I AGREE - CONTINUE</button><div class="back" onclick="openP('home')">← Back</div></div>
+
+<div id="register" class="page"><h2 style="text-align:center">Create Account</h2><input id="rn" placeholder="Full Name matching bank KYC"><input id="re" placeholder="Email"><input id="rp" type="password" placeholder="Password"><select id="utype"><option value="ordinary">Ordinary User</option><option value="pregnant">Pregnant Mother - Verify in Diary</option></select><button class="agree" onclick="doRegister()">CREATE ACCOUNT</button><div class="back" onclick="openP('agreement')">← Back</div></div>
+<div id="login" class="page"><h2 style="text-align:center">Login</h2><input id="le" placeholder="Email"><input id="lp" type="password" placeholder="Password"><button class="agree" onclick="openP('feed')">LOGIN</button><div class="back" onclick="openP('home')">← Back</div></div>
+
+<div id="feed" class="page"><h2 style="text-align:center">Feed - Video Music Quote</h2><div class="earn-bar">Balance: <span id="bal">0.0000</span> MAMACOIN | <span id="localBal">₦0.00</span><br>Points <span id="pts">0</span>/50 | Level <span id="lvl">0</span>/50 | Status <span id="status">Ordinary</span> | Referrals <span id="ref">0</span>/6<br><span style="font-size:10px">Post 0.0001 | Comment 0.0001 | Share 0.0002 | Music 0.0002 | Quote 0.0002 | Bonus 0.0006 - Verified 2x</span></div><button class="agree" style="height:44px;font-size:13px" onclick="watchMusic()">▶ WATCH MUSIC +0.0002</button><button class="agree" style="height:44px;font-size:13px;background:#fff" onclick="watchQuote()">▶ WATCH QUOTE +0.0002</button><div class="feed-card"><textarea id="postText" placeholder="Upload video description Post=+0.0001"></textarea><button class="agree" style="height:44px" onclick="doPost()">UPLOAD VIDEO POST</button><div style="font-size:10px;text-align:center">Interstitial: Posts 2+1 - 60s interval skippable</div></div><div id="postsArea"></div><div class="feed-card"><b>Bonus - No Interstitial - Rewarded Only</b><p style="font-size:11px">Optional bonus tasks - rewarded ad format - close after 5s allowed - No interstitial here</p><button class="agree" style="height:44px;background:#4A2D6E;color:#fff" onclick="doBonus()">WATCH BONUS +0.0006</button></div><button class="agree" onclick="openP('diary')">MY DIARY PRIVATE</button><button class="agree" style="background:#fff" onclick="openP('market')">MARKET & KYC</button><button class="agree" style="background:#4A2D6E;color:#fff" onclick="openP('wallet')">WALLET</button><div class="back" onclick="openP('home')">Log Out</div></div>
+
+<div id="diary" class="page"><h2 style="text-align:center">Private Diary - Only You</h2><div class="agree-box"><p style="color:#4A2D6E;font-weight:900">Mama Diary Private - Encrypted Only You See</p><input type="file" id="testFile" accept="image/*"><button class="agree" style="height:44px" onclick="verifyMama()">UPLOAD TEST - VERIFY 2X</button><textarea id="diaryText" placeholder="Save private memory..."></textarea><button class="agree" style="height:44px" onclick="saveDiary()">SAVE PRIVATE DIARY</button><div id="diaryList" style="font-size:12px"></div></div><button class="agree" onclick="openP('feed')">Back to Feed</button></div>
+<div id="market" class="page"><h2 style="text-align:center">Market - KYC Seller</h2><div class="agree-box"><input id="kycName" placeholder="Full Name matching bank"><input id="kycID" placeholder="ID Number"><button class="agree" style="height:44px" onclick="doKYC()">COMPLETE KYC</button><div style="margin:10px 0;border-top:1px solid #ccc"></div><input id="prodName" placeholder="Product Name"><input id="prodPrice" placeholder="Price MAMACOIN"><button class="agree" style="height:44px" onclick="addProduct()">UPLOAD PRODUCT - UNLIMITED</button><div id="marketList"></div></div><button class="agree" onclick="openP('feed')">Back</button></div>
+<div id="wallet" class="page"><h2 style="text-align:center">Wallet</h2><div class="agree-box"><p style="text-align:center"><b>MAMACOIN:</b> <span id="w_bal">0.0000</span><br><b>Local:</b> <span id="w_local">₦0.00</span><br><b>Level:</b> <span id="w_lvl">0</span>/50 | <b>Points:</b> <span id="w_pts">0</span>/50<br><span style="font-size:10px">Min 50 MAMACOIN | Fee 1 +5% | 24-72hrs</span></p><select id="bank"><option>Select Local Bank</option><option>Opay</option><option>Palmpay</option><option>Kuda</option><option>First Bank</option><option>GTBank</option><option>Access Bank</option></select><input id="accnum" placeholder="Account Number"><input id="accname" placeholder="Account Name matching KYC"><input id="amount" type="number" placeholder="Min 50 MAMACOIN"><div style="background:#4A2D6E;color:white;padding:8px;border-radius:10px;text-align:center;font-size:11px;margin:6px 0">You receive: <span id="calc">₦0.00</span> minus fee 1 +5%</div><button class="agree" style="background:#4A2D6E;color:#fff" onclick="withdraw()">WITHDRAW</button></div><button class="agree" onclick="openP('feed')">Back</button></div>
+
+<script>
+let mamacoin=0,points=0,level=0,isVerified=false,referrals=0,kycDone=false,lastAd=0,pc=0,mc=0,qc=0,cc=0,sc=0;
+let rate=75,symbol='₦',code='NGN';
+try{let tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';let lang=navigator.language||'';if(tz.includes('Lagos')||lang.includes('NG')){symbol='₦';code='NGN';rate=75;}else if(lang.includes('US')){symbol='$';code='USD';rate=0.5;}else if(lang.includes('GB')){symbol='£';code='GBP';rate=0.4;}else if(lang.includes('GH')){symbol='₵';code='GHS';rate=7;}else{symbol='₦';code='NGN';rate=75;}}catch(e){}
+function getRate(b){return (isVerified||referrals>=6)?b*2:b;}
+function addEarn(b,p,t){
+ let now=Date.now(),show=false;
+ if(t==='music'){mc++;if(mc%2===0&&now-lastAd>60000){show=true;lastAd=now;}}
+ if(t==='quote'){qc++;if(qc%2===0&&now-lastAd>60000){show=true;lastAd=now;}}
+ if(t==='post'){pc++;if(pc%3===0&&now-lastAd>60000){show=true;lastAd=now;}}
+ if(t==='comment'){cc++;if(cc%3===0&&now-lastAd>60000){show=true;lastAd=now;}}
+ if(t==='share'){sc++;if(sc%2===0&&now-lastAd>60000){show=true;lastAd=now;}}
+ if(show){alert('Interstitial Ad - '+t+' - 1+1 or 2+1 - Skippable - 60s interval - Never required to click');}
+ mamacoin+=getRate(b);points+=p;if(points>=50){level++;points=0;if(level>=50){mamacoin+=1;level=0;alert('Level 50 Bonus! +1 MAMACOIN! Level reset to 0');}else{alert('Level Up! Level '+level+' - Points reset to 0');}}upd();
+}
+function upd(){
+ document.getElementById('bal').innerText=mamacoin.toFixed(4);
+ document.getElementById('localBal').innerText=symbol+(mamacoin*rate).toFixed(2)+' '+code;
+ document.getElementById('pts').innerText=points;
+ document.getElementById('lvl').innerText=level;
+ document.getElementById('status').innerText=isVerified?'Verified Mama 2x':referrals>=6?'Upgraded 2x':'Ordinary';
+ document.getElementById('ref').innerText=referrals;
+ document.getElementById('w_bal').innerText=mamacoin.toFixed(4);
+ document.getElementById('w_local').innerText=symbol+(mamacoin*rate).toFixed(2)+' '+code;
+ document.getElementById('w_pts').innerText=points;
+ document.getElementById('w_lvl').innerText=level;
+ let am=document.getElementById('amount').value;if(am){document.getElementById('calc').innerText=symbol+(am*rate).toFixed(2)+' '+code;}
+}
+function watchMusic(){addEarn(0.0002,1,'music');}function watchQuote(){addEarn(0.0002,1,'quote');}
+function doPost(){let t=document.getElementById('postText').value.trim();if(!t){alert('Write video description');return;}let a=document.getElementById('postsArea');let d=document.createElement('div');d.className='feed-card';d.innerHTML='<b>Video Post:</b> '+t+'<br><div style="display:flex;gap:6px;margin-top:6px"><button onclick="doComment()" style="flex:1;height:32px;border-radius:16px;border:none;background:#4A2D6E;color:#fff;font-weight:900;font-size:11px">COMMENT +0.0001</button><button onclick="doShare()" style="flex:1;height:32px;border-radius:16px;border:none;background:#FFD700;color:#4A2D6E;font-weight:900;font-size:11px">SHARE +0.0002</button></div><div style="font-size:9px;text-align:center;margin-top:4px">Interstitial: comments 2+1 | share 1+1 | 60s interval</div>';a.prepend(d);document.getElementById('postText').value='';addEarn(0.0001,1,'post');}
+function doComment(){addEarn(0.0001,1,'comment');alert('Comment added +'+getRate(0.0001).toFixed(4)+' MAMACOIN');}function doShare(){addEarn(0.0002,1,'share');alert('Shared +'+getRate(0.0002).toFixed(4)+' MAMACOIN');}
+function doBonus(){let e=getRate(0.0006);mamacoin+=e;points+=2;if(points>=50){level++;points=0;if(level>=50){mamacoin+=1;level=0;}}upd();alert('Bonus Task Completed +'+e.toFixed(4)+' MAMACOIN - Rewarded Ad - No Interstitial - Close after 5s allowed');}
+function verifyMama(){let f=document.getElementById('testFile').files[0];if(!f){alert('Select pregnancy test image - private only you see');return;}isVerified=true;upd();alert('Verified! You are now Verified Pregnant Mother - 2x earnings. Your test result is private encrypted only you see.');}
+function saveDiary(){let t=document.getElementById('diaryText').value.trim();if(!t){alert('Write memory');return;}let l=document.getElementById('diaryList');let d=document.createElement('div');d.style.background='#f0f0f0';d.style.padding='8px';d.style.borderRadius='8px';d.style.margin='6px 0';d.innerHTML='<b>Private:</b> '+t+'<br><span style="font-size:10px">'+new Date().toLocaleString()+'</span>';l.prepend(d);document.getElementById('diaryText').value='';alert('Saved to private diary - only you see');}
+function doKYC(){let n=document.getElementById('kycName').value.trim(),id=document.getElementById('kycID').value.trim();if(!n||!id){alert('Enter full name matching bank and ID');return;}kycDone=true;alert('KYC Complete! Unlimited product uploads unlocked - Name must match bank for withdrawal');}
+function addProduct(){if(!kycDone){alert('Complete KYC first - full name matching bank');return;}let n=document.getElementById('prodName').value.trim(),p=document.getElementById('prodPrice').value.trim();if(!n||!p){alert('Enter product name and price');return;}let l=document.getElementById('marketList');let d=document.createElement('div');d.className='feed-card';d.innerHTML='<b>'+n+'</b><br>Price: '+p+' MAMACOIN + delivery<br><button style="height:32px;border-radius:16px;border:none;background:#FFD700;color:#4A2D6E;font-weight:900;font-size:11px;width:100%;margin-top:6px">BUY WITH MAMACOIN</button>';l.prepend(d);document.getElementById('prodName').value='';document.getElementById('prodPrice').value='';alert('Product uploaded - unlimited');}
+function withdraw(){let b=document.getElementById('bank').value,ac=document.getElementById('accnum').value,an=document.getElementById('accname').value,am=parseFloat(document.getElementById('amount').value);if(b==='Select Local Bank'||!ac||!an||!am){alert('Fill all bank details - account name must match KYC');return;}if(am<50){alert('Min 50 MAMACOIN');return;}if(am>mamacoin){alert('Insufficient - You have '+mamacoin.toFixed(4));return;}mamacoin-=am;upd();alert('Withdrawal Request Sent! '+am+' MAMACOIN = '+symbol+(am*rate).toFixed(2)+' '+code+' minus fee 1 +5% - 24-72hrs to '+b);}
+function doRegister(){let n=document.getElementById('rn').value.trim();if(!n){alert('Enter full name must match bank & KYC');return;}openP('feed');}
+function hideSplash(){let s=document.getElementById('splash');if(s){s.style.transition='opacity 0.8s';s.style.opacity='0';setTimeout(()=>s.style.display='none',800);}}
+setTimeout(hideSplash,3500);
+// VIDEO SAFE HANDLING - IF intro.mp4 NOT EXIST, USE icon.png - NEVER BLACK
+let v=document.getElementById('introVideo');let icon=document.getElementById('splashIcon');
+v.addEventListener('error',()=>{v.style.display='none';});
+v.addEventListener('canplay',()=>{v.style.display='block';});
+setTimeout(()=>{if(v.readyState===0){v.style.display='none';}},2500);
+function openP(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));document.getElementById('home').style.display=id==='home'?'flex':'none';if(id!=='home')document.getElementById(id).classList.add('on');upd();}
+upd();
+</script>
+</body>
+  </html>
