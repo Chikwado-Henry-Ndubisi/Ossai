@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ossai75.ng</title>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAlMlmqWlGgBdo9uVKP5wyB7ujmn3-XGCQ",
+  authDomain: "ossai75-ng.firebaseapp.com",
+  projectId: "ossai75-ng",
+  storageBucket: "ossai75-ng.firebasestorage.app",
+  messagingSenderId: "152745254453",
+  appId: "1:152745254453:web:ec4d5080f79b7105b59b7c",
+  measurementId: "G-DQY33E06TH"
+};
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+logEvent(analytics, 'app_open');
+window.trackCreate = () => { logEvent(analytics, 'create_account_click'); openP('agreement'); }
+window.trackLogin = () => { logEvent(analytics, 'login_click'); openP('login'); }
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{margin:0;padding:0;background:#4A2D6E;width:100%;height:100%;overflow:hidden}
+body{background:#4A2D6E;width:100vw;height:100vh;overflow:hidden;font-family:Arial Black,Arial,sans-serif}
+
+/* FULL BACKGROUND - OLD LOGO LIKE BEFORE */
+.bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:1}
+.bg img{width:100vw;height:100vh;object-fit:cover;display:block}
+
+.ads{position:fixed;left:0;width:100vw;height:90px;background:white;z-index:20;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-family:Arial}
+.ads-top{top:0}.ads-bot{bottom:0}
+.marq{position:fixed;left:0;width:100vw;height:65px;z-index:21;display:flex;align-items:center;overflow:hidden;white-space:nowrap;background:rgba(0,0,0,0.5)}
+.marq-top{top:90px}.marq-bot{bottom:90px}
+.marq b{color:#FFD700;font-size:40px;font-weight:900;animation:slide 12s linear infinite;padding-left:100%;font-family:Arial Black}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+/* SHIFTED UP FAR FROM ADS */
+.content{position:fixed;top:155px;left:0;width:100vw;height:calc(100vh - 310px);z-index:12;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-bottom:100px}
+.logo-name{color:white;font-size:40px;font-weight:900;text-shadow:0 3px 10px black}
+.sub{color:#FFD700;font-size:17px;font-weight:900;margin:10px 0 50px}
+.btns{width:96vw;display:flex;flex-direction:column;gap:35px;margin-bottom:70px;align-items:center}
+.btn{background:none !important;border:none !important;box-shadow:none !important;width:auto;height:auto;border-radius:0;font-weight:900;font-size:26px;cursor:pointer;letter-spacing:1px;text-shadow:0 3px 10px black;padding:10px 20px;font-family:Arial Black}
+.btn-gold{color:#FFD700}.btn-purple{color:white}
+.btn:active{transform:scale(0.95);opacity:0.8}
+
+/* SPLASH WITH intro.mp4 -> OLD BG */
+#splash{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#4A2D6E;z-index:100;transition:opacity 0.8s;overflow:hidden}
+#introVideo{position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:2;background:#4A2D6E}
+#splashBg{position:absolute;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:1;display:none}
+#splash .t{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;width:100vw}
+.loader{margin:20px auto 0;width:50px;height:50px;border:4px solid rgba(255,255,255,0.3);border-top:4px solid #FFD700;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.page{display:none;position:fixed;inset:0;background:#4A2D6E;z-index:60;overflow:auto;padding:12px}
+.page.on{display:block}
+.agree-box{background:#fff;color:#222;border-radius:16px;padding:14px;font-family:Arial;font-size:13px;line-height:1.6;max-height:60vh;overflow:auto}
+.agree{width:92%;height:54px;background:#FFD700;color:#4A2D6E;border:none;border-radius:50px;font-weight:900;font-size:16px;margin:10px auto;display:block;font-family:Arial Black;cursor:pointer}
+input,textarea,select{width:100%;min-height:52px;border-radius:26px;border:none;padding:12px 16px;margin:6px 0;font-weight:700;font-family:Arial}
+.back{color:#FFD700;text-align:center;font-weight:900;margin-top:8px;cursor:pointer}
+.feed-card{background:#fff;color:#222;border-radius:12px;padding:10px;margin:8px 0;font-family:Arial}
+.earn-bar{background:#fff;color:#222;border-radius:10px;padding:8px;text-align:center;font-family:Arial;font-size:12px;margin:8px 0}
+</style>
+</head>
+<body>
+
+<!-- SPLASH: intro.mp4 plays first FULL, then OLD background icon.png full -->
+<div id="splash" onclick="hideSplash()">
+<video id="introVideo" autoplay muted playsinline preload="auto"><source src="intro.mp4" type="video/mp4"></video>
+<img id="splashBg" src="icon.png" onerror="this.style.background='#4A2D6E'">
+<div class="t">
+<h1 style="font-size:48px;font-weight:900;color:white;text-shadow:0 3px 10px #000">ossai75.ng</h1>
+<p style="color:#FFD700;font-size:20px;font-weight:900">Pregnant Mothers Care App</p>
+<div class="loader"></div>
+<p style="font-size:12px;margin-top:12px;background:rgba(0,0,0,0.4);padding:6px 14px;border-radius:20px;color:white">TAP TO CONTINUE</p>
+</div>
+</div>
+
+<!-- YOUR OLD BACKGROUND - FULL SCREEN LOGO -->
+<div class="bg"><img src="icon.png" id="mainBg" onerror="this.style.display='none'"></div>
+<div class="ads ads-top">ADS TOP 90px - AdMob</div>
+<div class="marq marq-top"><b>🔥 COMPLETE TASKS TO EARN MAMACOIN & BABYCOIN ★ NIGERIA SPECIAL BONUS ★</b></div>
+
+<div class="content" id="homeContent">
+<div class="logo-name">ossai75.ng</div>
+<div class="sub">Pregnant Mothers Care App</div>
+<div class="btns">
+<button class="btn btn-gold" onclick="trackCreate()">CREATE FREE ACCOUNT</button>
+<button class="btn btn-purple" onclick="trackLogin()">LOGIN TO YOUR ACCOUNT</button>
+</div>
+</div>
+
+<div class="marq marq-bot"><b>💜 COMPLETE DAILY TASKS TO EARN UP TO 10 MAMACOINS ★ SAFE & VERIFIED ★</b></div>
+<div class="ads ads-bot">ADS BOTTOM 90px - AdMob</div>
+
+<!-- PAGES FOR FUNCTIONALITY -->
+<div id="agreement" class="page"><h2 style="text-align:center;color:white">USER AGREEMENT</h2><div class="agree-box"><p><b>1.</b> Free social for mothers - video music quotes, diary private, market KYC unlimited.</p><p><b>2.</b> Post 0.0001, Comment 0.0001, Share 0.0002, Music 0.0002, Quote 0.0002, Bonus 0.0006 rewarded no interstitial. Verified 2x. Level 50=1 MAMACOIN bonus.</p><p><b>3.</b> ADS: Banner 60s no reward, Interstitial 1+1 / 2+1 60s skippable, Bonus rewarded 5s close, Upload never requires ad.</p><p><b>4.</b> Diary private encrypted only you.</p></div><button class="agree" onclick="openP('register')">I AGREE - CONTINUE</button><div class="back" onclick="openP('home')">← Back</div></div>
+<div id="register" class="page"><h2 style="text-align:center;color:white">Create Account</h2><input placeholder="Full Name matching bank"><input placeholder="Email"><input type="password" placeholder="Password"><button class="agree" onclick="openP('feed')">CREATE</button><div class="back" onclick="openP('agreement')">← Back</div></div>
+<div id="login" class="page"><h2 style="text-align:center;color:white">Login</h2><input placeholder="Email"><input type="password" placeholder="Password"><button class="agree" onclick="openP('feed')">LOGIN</button><div class="back" onclick="openP('home')">← Back</div></div>
+<div id="feed" class="page"><h2 style="text-align:center;color:white">Feed</h2><div class="earn-bar">Bal <span id="bal">0.0000</span> | Pts <span id="pts">0</span>/50 | Lvl <span id="lvl">0</span></div><button class="agree" onclick="addEarn(0.0002)">WATCH MUSIC +0.0002</button><div class="feed-card"><textarea id="postText" placeholder="Post +0.0001"></textarea><button class="agree" onclick="doPost()">UPLOAD</button></div><div id="postsArea"></div><button class="agree" onclick="openP('diary')">DIARY PRIVATE</button><button class="agree" style="background:#fff" onclick="openP('market')">MARKET</button><button class="agree" style="background:#4A2D6E;color:#fff" onclick="openP('wallet')">WALLET</button><div class="back" onclick="openP('home')">Logout</div></div>
+<div id="diary" class="page"><h2 style="text-align:center;color:white">Diary Private</h2><div class="agree-box"><input type="file"><button class="agree" onclick="isVerified=true;upd();alert('Verified 2x')">VERIFY</button><textarea id="diaryText"></textarea><button class="agree" onclick="saveDiary()">SAVE</button><div id="diaryList"></div></div><button class="agree" onclick="openP('feed')">Back</button></div>
+<div id="market" class="page"><h2 style="text-align:center;color:white">Market</h2><div class="agree-box"><input placeholder="KYC Name"><input placeholder="ID"><button class="agree" onclick="kycDone=true;alert('KYC Done')">KYC</button><input id="prodName" placeholder="Product"><input id="prodPrice" placeholder="Price"><button class="agree" onclick="addProduct()">UPLOAD</button><div id="marketList"></div></div><button class="agree" onclick="openP('feed')">Back</button></div>
+<div id="wallet" class="page"><h2 style="text-align:center;color:white">Wallet</h2><div class="agree-box"><p style="text-align:center"><b id="w_bal">0.0000</b> MAMACOIN</p><input placeholder="Bank"><input id="amount" type="number" placeholder="Min 50"><button class="agree" style="background:#4A2D6E;color:#fff" onclick="withdraw()">WITHDRAW</button></div><button class="agree" onclick="openP('feed')">Back</button></div>
+
+<script>
+let mamacoin=0,points=0,level=0,isVerified=false,kycDone=false;
+function addEarn(b=0.0002){mamacoin+=isVerified?b*2:b;points++;if(points>=50){level++;points=0;if(level>=50){mamacoin+=1;level=0;}}upd();}
+function upd(){document.getElementById('bal').innerText=mamacoin.toFixed(4);document.getElementById('w_bal').innerText=mamacoin.toFixed(4);}
+function doPost(){let t=document.getElementById('postText').value;if(!t)return;document.getElementById('postsArea').innerHTML='<div class=feed-card>'+t+'</div>'+document.getElementById('postsArea').innerHTML;addEarn(0.0001);}
+function saveDiary(){let t=document.getElementById('diaryText').value;document.getElementById('diaryList').innerHTML='<div>'+t+'</div>'+document.getElementById('diaryList').innerHTML;}
+function addProduct(){let n=document.getElementById('prodName').value;let p=document.getElementById('prodPrice').value;document.getElementById('marketList').innerHTML='<div class=feed-card>'+n+' - '+p+'</div>'+document.getElementById('marketList').innerHTML;}
+function withdraw(){let am=parseFloat(document.getElementById('amount').value);if(am<50||am>mamacoin){alert('Min 50 or insufficient');return;}mamacoin-=am;upd();alert('Withdraw sent');}
+function openP(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));if(id==='home'){document.getElementById('homeContent').style.display='flex';document.querySelector('.bg').style.display='block';document.querySelectorAll('.ads,.marq').forEach(e=>e.style.display='flex');}else{document.getElementById('homeContent').style.display='none';document.querySelector('.bg').style.display='none';document.querySelectorAll('.ads,.marq').forEach(e=>e.style.display='none');document.getElementById(id).classList.add('on');}upd();}
+let introDone=false;
+function showOldBg(){
+ let v=document.getElementById('introVideo');
+ let bg=document.getElementById('splashBg');
+ if(v){v.style.display='none';}
+ if(bg){bg.style.display='block';}
+ introDone=true;
+}
+function hideSplash(){
+ let s=document.getElementById('splash');
+ if(s){s.style.opacity='0';setTimeout(()=>s.style.display='none',800);}
+}
+let v=document.getElementById('introVideo');
+if(v){
+ v.addEventListener('ended',showOldBg);
+ v.addEventListener('error',showOldBg);
+ setTimeout(()=>{if(!introDone)showOldBg();},3500); // after intro.mp4 -> show OLD background
+ setTimeout(hideSplash,7500); // auto hide after old bg
+}else{
+ setTimeout(hideSplash,3500);
+}
+upd();
+</script>
+</body>
+  </html>
