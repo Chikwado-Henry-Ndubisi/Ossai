@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>ossai75.ng - MamaConnect</title>
+<link rel="manifest" href="manifest.json">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial}
+body{background:#4A2D6E;overflow:hidden}
+.page{display:none;min-height:100vh;overflow:auto}
+.page.on{display:block}
+/* INTRO */
+#intro{background:radial-gradient(circle at top, #6a4a9a 0%, #4A2D6E 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:white}
+.logo{width:90px;height:90px;border-radius:50%;background:linear-gradient(#ffe27a,#FFD700);display:flex;align-items:center;justify-content:center;font-size:40px;box-shadow:0 0 30px #FFD700;margin-bottom:16px}
+.intro-btn{background:#FFD700;color:#4A2D6E;border:none;padding:14px 36px;border-radius:28px;font-weight:900;font-size:15px;margin-top:24px}
+/* AGREEMENT */
+#agreement{background:#F5F0FF;padding:20px}
+.ag-box{background:white;border-radius:18px;padding:18px;margin-top:12px;box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+.ag-box h3{color:#4A2D6E;margin-bottom:8px}
+.ag-box p{font-size:12px;line-height:1.6;color:#555}
+.chk{margin:14px 0;display:flex;gap:8px;font-size:12px}
+.ag-continue{background:#4A2D6E;color:white;border:none;padding:14px;width:100%;border-radius:28px;font-weight:900;margin-top:10px;opacity:0.4}
+.ag-continue.ok{opacity:1;background:#FFD700;color:#4A2D6E}
+/* DASHBOARD - ACCURATE LIKE IMAGE */
+#dashboard{background:#F5F0FF;min-height:100vh;padding-bottom:80px}
+.db-header{background:#4A2D6E;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;color:white;position:sticky;top:0;z-index:30}
+.db-tabs{background:#4A2D6E;display:flex;gap:6px;padding:0 8px 12px;overflow:auto;white-space:nowrap;position:sticky;top:50px;z-index:29}
+.db-tabs span{padding:8px 14px;border-radius:18px;font-size:13px;font-weight:900;cursor:pointer;color:rgba(255,255,255,0.7);background:rgba(0,0,0,0.18)}
+.db-tabs span.active{background:#FFD54F;color:#4A2D6E}
+.tab-page{display:none;padding:12px}.tab-page.on{display:block}
+.write-box{background:white;border-radius:18px;padding:14px;box-shadow:0 4px 16px rgba(0,0,0,0.07);border:1.5px solid #E9E0FF}
+.write-top{display:flex;gap:10px}
+.write-av{width:42px;height:42px;border-radius:50%;background:#E9D5FF;display:flex;align-items:center;justify-content:center;font-size:20px}
+.write-input{flex:1;background:#F5F0FF;border-radius:12px;padding:10px 12px;min-height:50px;border:none;outline:none;font-size:13px;color:#4A2D6E;resize:none;width:100%}
+.write-actions{display:flex;gap:8px;margin-top:12px}
+.w-btn{flex:1;padding:10px;border-radius:12px;border:none;font-weight:900;font-size:13px;background:#F5F0FF;color:#4A2D6E}
+.w-post{background:#FFC928;color:#4A2D6E}
+.post-card{background:white;border-radius:18px;padding:12px;margin:14px 0;box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+.post-head{display:flex;gap:10px;align-items:center}
+.p-av{width:40px;height:40px;border-radius:50%;background:#FFE6C8;display:flex;align-items:center;justify-content:center}
+.p-name{font-weight:900;color:#4A2D6E;font-size:13px}
+.p-meta{font-size:11px;color:#888}
+.p-text{margin:10px 0;font-size:13px;line-height:1.5;color:#222;white-space:pre-wrap}
+.p-img{width:100%;border-radius:12px;margin-top:8px;max-height:220px;object-fit:cover}
+.p-actions{display:flex;justify-content:space-between;margin-top:12px;border-top:1px solid #F0F0F0;padding-top:10px;font-size:12px;font-weight:900;color:#6B5A8A}
+/* BONUS BUTTON - ON ALL PAGES - 10x LOCK COLOUR CHANGE */
+.pi-bonus{position:fixed;top:50%;right:10px;width:62px;height:62px;border-radius:50%;border:2.5px solid #fff;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .3s}
+.pi-bonus.gold{background:radial-gradient(circle at 30% 30%, #ffe27a,#FFD700 50%, #b38600);box-shadow:0 0 18px #FFD700;animation:float 2s infinite}
+.pi-bonus.locked{background:radial-gradient(circle at 30% 30%, #999,#555);opacity:0.7}
+.pi-bonus.ready{background:radial-gradient(circle at 30% 30%, #8aff8a,#00cc00);box-shadow:0 0 20px #00ff00}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.pi-count{position:absolute;top:-6px;right:-6px;background:#FF3B30;color:white;font-size:9px;font-weight:900;padding:3px 7px;border-radius:12px;border:1.5px solid white}
+.badge-pop{position:absolute;top:50%;right:-24px;background:#FFC928;color:#4A2D6E;font-size:11px;font-weight:900;padding:6px 14px;border-radius:20px;box-shadow:0 3px 12px rgba(0,0,0,0.2);display:none}
+.share-sheet{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;display:none;align-items:flex-end}.share-sheet.on{display:flex}
+.share-box{background:white;width:100%;border-radius:22px 22px 0 0;padding:16px 12px 28px}
+</style>
+</head>
+<body>
+
+<!-- INTRO - FROM BEGINNING -->
+<div id="intro" class="page on">
+<div class="logo">🪷</div>
+<h1 style="color:#FFD700;font-size:22px">ossai75.ng</h1>
+<p style="margin-top:8px;font-size:13px;color:rgba(255,255,255,0.8)">MamaConnect • Pregnant Mothers Community</p>
+<p style="margin-top:16px;font-size:12px;line-height:1.6;max-width:320px">Safe space for mamas to share, learn, and support each other from first kick to delivery. Earn 0.0006 MAMACOIN for every post.</p>
+<button class="intro-btn" onclick="showPage('agreement')">Get Started →</button>
+<p style="margin-top:20px;font-size:10px;opacity:0.6">© ossai75.ng 2026 • Ndubisi Chikwado Henry</p>
+</div>
+
+<!-- AGREEMENT - FROM BEGINNING -->
+<div id="agreement" class="page">
+<div style="color:#4A2D6E;font-weight:900;font-size:18px;margin:10px 0">Community Guidelines & Agreement</div>
+<div class="ag-box">
+<h3>🤝 Mama Promise</h3>
+<p>We keep this space kind, supportive, and private. No judgement, no spam. Share your journey, ask questions, support other mamas.</p>
+</div>
+<div class="ag-box">
+<h3>🔒 Privacy</h3>
+<p>Your diary is private and encrypted. Social posts are visible to verified mamas only. You can delete anytime.</p>
+</div>
+<div class="ag-box">
+<h3>💛 Earn 0.0006 MAMACOIN</h3>
+<p>You earn 0.0006 MAMACOIN for posting, commenting, sharing. Bonus button gives extra 0.0006 when you engage.</p>
+</div>
+<div class="chk"><input type="checkbox" id="chk1" onchange="checkAg()"> <label for="chk1">I agree to be kind and supportive to other mamas</label></div>
+<div class="chk"><input type="checkbox" id="chk2" onchange="checkAg()"> <label for="chk2">I agree diary is private and social posts are community only</label></div>
+<button id="agBtn" class="ag-continue" onclick="showPage('dashboard')">Continue to Dashboard →</button>
+</div>
+
+<!-- DASHBOARD - ACCURATE LIKE IMAGE YOU APPROVED -->
+<div id="dashboard" class="page">
+<div class="db-header">
+<div style="display:flex;align-items:center;gap:8px"><span style="font-size:20px">🪷</span><b style="color:#FFD54F">MamaConnect</b><span style="font-size:9px;background:rgba(255,255,255,0.15);padding:2px 8px;border-radius:10px">ossai75.ng</span></div>
+<div style="font-size:10px;border:1px solid #FFD54F;color:#FFD54F;padding:5px 10px;border-radius:14px">◎ 0.0006 MAMACOIN</div>
+</div>
+<div class="db-tabs">
+<span id="t-social" class="active" onclick="switchTab('social')">Social</span>
+<span id="t-diary" onclick="switchTab('diary')">Diary</span>
+<span id="t-earn" onclick="switchTab('earn')">Earn</span>
+<span id="t-task" onclick="switchTab('task')">Task</span>
+<span id="t-wallet" onclick="switchTab('wallet')">Wallet</span>
+<span id="t-more" onclick="switchTab('more')">More</span>
+</div>
+
+<!-- BONUS BUTTON - ALL PAGES - 10x LOCK COLOUR -->
+<div class="pi-bonus gold" id="piBonus" onclick="clickBonus()">
+<div style="font-size:20px" id="piIcon">⚡</div><small id="piText" style="font-size:8px;font-weight:900;color:#4A2D6E">BONUS</small>
+<div class="pi-count" id="piCount">10/10</div>
+<div class="badge-pop" id="badgePop">+0.0006</div>
+</div>
+
+<!-- SOCIAL TAB - WRITE POST + FEED -->
+<div id="tab-social" class="tab-page on">
+<div class="write-box">
+<div class="write-top">
+<div class="write-av">🤰</div>
+<div style="flex:1">
+<div style="font-weight:900;color:#4A2D6E;font-size:14px">Write Post</div>
+<textarea id="postInput" class="write-input" placeholder="How are you feeling today, mama? Share with other mamas..."></textarea>
+</div>
+</div>
+<div style="display:flex;gap:8px;margin-top:10px"><span style="font-size:11px;color:#888">Today — 21 Sept • 20 weeks pregnant</span></div>
+<div class="write-actions">
+<button class="w-btn" onclick="document.getElementById('imgPick').click()">🖼️ Photo</button>
+<button class="w-btn" onclick="document.getElementById('vidPick').click()">🎥 Video</button>
+<button class="w-btn w-post" onclick="createPost()">Post</button>
+</div>
+<input type="file" id="imgPick" accept="image/*" style="display:none" onchange="previewImg(this)">
+<input type="file" id="vidPick" accept="video/*" style="display:none">
+<img id="imgPreview" style="display:none;width:100%;border-radius:12px;margin-top:10px;max-height:200px;object-fit:cover">
+</div>
+
+<div id="feed">
+<div class="post-card">
+<div class="post-head"><div class="p-av">🤎</div><div><div class="p-name">Amara Nwachukwu</div><div class="p-meta">2h ago • 20 weeks 👶 • First kick!</div></div></div>
+<div class="p-text">First kick today at 20 weeks! 💛 Over the moon and a little emotional. Thank you to everyone here for the advice on stretches — they really helped with the back pain. We are so blessed.</div>
+<img class="p-img" src="https://images.unsplash.com/photo-1544126592-807ade215a0b?w=600">
+<div class="p-actions"><span>❤️ 24 Likes</span><span>💬 5 Comments</span><span onclick="openShare('First kick today at 20 weeks')">↗ Share</span></div>
+</div>
+
+<div class="post-card">
+<div class="post-head"><div class="p-av">🧕</div><div><div class="p-name">Fatima K.</div><div class="p-meta">5h ago • 32 weeks</div></div></div>
+<div class="p-text">Meal prep Sunday! Made ugwu soup and oats for the week. Any other moms struggling with nausea? Ginger tea has been my little lifesaver this week 🌱</div>
+<div class="p-actions"><span>❤️ 18 Likes</span><span>💬 8 Comments</span><span onclick="openShare('Meal prep Sunday ugwu soup')">↗ Share</span></div>
+</div>
+</div>
+</div>
+
+<div id="tab-diary" class="tab-page">
+<h3 style="color:#4A2D6E">📔 Your Diary - Private & Encrypted</h3>
+<p style="font-size:11px;color:#888;margin:6px 0">Only you can see this. Not shown in Community Feed.</p>
+<div style="background:white;border-radius:16px;padding:12px;margin-top:10px">
+<div style="font-weight:900;color:#4A2D6E">Today — 21 Sept • 20 weeks pregnant</div>
+<div style="font-size:12px;margin-top:8px;color:#4A2D6E">How are you feeling today?</div>
+<textarea id="diaryInput" placeholder="Feeling calm today. Baby was very active after dinner ✨" style="width:100%;height:80px;background:#F5F0FF;border:none;border-radius:12px;padding:12px;margin-top:8px;outline:none;font-size:13px"></textarea>
+<button onclick="saveDiary()" style="background:#FFC928;border:none;padding:10px 18px;border-radius:20px;font-weight:900;color:#4A2D6E;margin-top:8px;font-size:12px">Write Entry → +0.0006</button>
+</div>
+<div id="diaryList" style="margin-top:12px"></div>
+</div>
+
+<div id="tab-earn" class="tab-page">
+<h3 style="color:#4A2D6E">Earn 0.0006 MAMACOIN</h3>
+<p style="font-size:11px;color:#888">Watch to unlock BONUS button when locked</p>
+<div onclick="onVideoWatched('quote')" style="background:white;padding:14px;border-radius:14px;margin:10px 0;display:flex;justify-content:space-between;align-items:center"><span>▶️ Video Quote +0.0006</span><span style="background:#FFC928;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:900">Watch</span></div>
+<div onclick="onVideoWatched('music')" style="background:white;padding:14px;border-radius:14px;margin:10px 0;display:flex;justify-content:space-between;align-items:center"><span>🎵 Video Music +0.0006</span><span style="background:#FFC928;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:900">Watch</span></div>
+<div onclick="onVideoWatched('market')" style="background:white;padding:14px;border-radius:14px;margin:10px 0">🛒 Mama Market +0.0006</div>
+<p style="font-size:11px;margin-top:16px">Progress to unlock bonus: <b id="engageProg">0/3</b></p>
+</div>
+
+<div id="tab-task" class="tab-page"><h3 style="color:#4A2D6E">Task</h3><div style="background:white;padding:14px;border-radius:14px;margin-top:10px">Daily Check-in +0.0006 MAMACOIN<br><small>Tap bonus 10x</small></div></div>
+<div id="tab-wallet" class="tab-page"><h3 style="color:#4A2D6E">Wallet</h3><div style="background:white;padding:20px;border-radius:16px;margin-top:12px;text-align:center"><div style="font-size:32px">🪙</div><div style="font-weight:900;font-size:20px;color:#4A2D6E;margin-top:8px" id="walletBal">0.0006 MAMACOIN</div><div style="font-size:11px;color:#888">Earned from posts & bonus</div></div></div>
+<div id="tab-more" class="tab-page"><h3 style="color:#4A2D6E">More</h3><div style="background:white;border-radius:14px;padding:14px;line-height:2.4;margin-top:10px;font-size:13px">Level Benefits<br>Order History<br>Coupon (0)<br>About ossai75.ng<br>Refer & Earn +0.0006<br><br>© 2026 Ndubisi Chikwado Henry</div></div>
+
+<!-- SHARE SHEET - ANY SOCIAL MEDIA -->
+<div class="share-sheet" id="shareSheet" onclick="this.classList.remove('on')">
+<div class="share-box" onclick="event.stopPropagation()">
+<div style="width:40px;height:4px;background:#FFC928;border-radius:10px;margin:0 auto 10px"></div>
+<div style="text-align:center;font-weight:900;color:#4A2D6E">Share via</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0;text-align:center">
+<div onclick="doShare('whatsapp')"><div style="width:54px;height:54px;border-radius:14px;background:#25D366;margin:auto;display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:22px">W</div><div style="font-size:10px;margin-top:6px">WhatsApp</div></div>
+<div onclick="doShare('facebook')"><div style="width:54px;height:54px;border-radius:14px;background:#1877F2;margin:auto;display:flex;align-items:center;justify-content:center;color:white;font-weight:900">f</div><div style="font-size:10px;margin-top:6px">Facebook</div></div>
+<div onclick="doShare('instagram')"><div style="width:54px;height:54px;border-radius:14px;background:linear-gradient(45deg,#feda75,#d62976);margin:auto;display:flex;align-items:center;justify-content:center;color:white;font-weight:900">IG</div><div style="font-size:10px;margin-top:6px">Instagram</div></div>
+<div onclick="doShare('twitter')"><div style="width:54px;height:54px;border-radius:14px;background:black;margin:auto;display:flex;align-items:center;justify-content:center;color:white;font-weight:900">𝕏</div><div style="font-size:10px;margin-top:6px">Twitter</div></div>
+</div>
+<div style="text-align:center"><button onclick="document.getElementById('shareSheet').classList.remove('on')" style="border:1.5px solid #FFC928;background:none;padding:8px 32px;border-radius:20px;font-weight:900;color:#4A2D6E">Cancel</button></div>
+</div>
+</div>
+</div>
+
+<script>
+let mamacoin=parseFloat(localStorage.getItem('mamacoin')||'0.0006');
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo(0,0);}
+function checkAg(){const a=document.getElementById('chk1').checked,b=document.getElementById('chk2').checked,btn=document.getElementById('agBtn');if(a&&b){btn.classList.add('ok');}else{btn.classList.remove('ok');}}
+let bonusClicks=parseInt(localStorage.getItem('bonusClicks')||'10'), bonusLocked=localStorage.getItem('bonusLocked')==='true', engageCount=parseInt(localStorage.getItem('engageCount')||'0'), curText="", pickedImg="";
+const MAX=10, NEED=3;
+function updateBonusUI(){const btn=document.getElementById('piBonus'),c=document.getElementById('piCount'),ic=document.getElementById('piIcon'),tx=document.getElementById('piText'),prog=document.getElementById('engageProg');if(prog) prog.textContent=engageCount+'/'+NEED;if(bonusLocked&&engageCount>=NEED){bonusLocked=false;bonusClicks=MAX;engageCount=0;btn.className='pi-bonus ready';ic.textContent='✅';tx.textContent='READY';c.textContent='10/10';localStorage.setItem('bonusClicks',bonusClicks);localStorage.setItem('bonusLocked','false');localStorage.setItem('engageCount','0');setTimeout(()=>{btn.className='pi-bonus gold';ic.textContent='⚡';tx.textContent='BONUS';},2000);alert('🎉 Unlocked! Green READY → Gold BONUS again for 10x!');return;}if(bonusLocked){btn.className='pi-bonus locked';ic.textContent='🔒';tx.textContent=`WATCH ${NEED-engageCount}`;c.textContent=`${engageCount}/${NEED}`;}else{btn.className='pi-bonus gold';ic.textContent='⚡';tx.textContent='BONUS';c.textContent=`${bonusClicks}/${MAX}`;}}
+function clickBonus(){if(bonusLocked){alert(`🔒 Locked after 10x!\nWatch ${NEED-engageCount} Video Quote/Music to turn green READY and unlock.`);switchTab('earn');return;}if(bonusClicks>0){bonusClicks--;mamacoin+=0.0006;localStorage.setItem('mamacoin',mamacoin.toFixed(6));document.getElementById('walletBal').textContent=mamacoin.toFixed(6)+' MAMACOIN';const b=document.getElementById('badgePop');b.style.display='flex';b.textContent='+0.0006';setTimeout(()=>b.style.display='none',2000);if(bonusClicks===0){bonusLocked=true;engageCount=0;alert('✅ 10x Bonus mined +0.0060 total!\nNow GREY LOCKED 🔒\nWatch 2-3 videos in Earn to get GREEN READY.');}localStorage.setItem('bonusClicks',bonusClicks);localStorage.setItem('bonusLocked',bonusLocked);updateBonusUI();}}
+function onVideoWatched(t){engageCount++;mamacoin+=0.0006;localStorage.setItem('mamacoin',mamacoin.toFixed(6));localStorage.setItem('engageCount',engageCount);document.getElementById('walletBal').textContent=mamacoin.toFixed(6)+' MAMACOIN';if(bonusLocked&&engageCount<NEED) alert(`👍 Good! ${engageCount}/${NEED} watched. Watch ${NEED-engageCount} more to unlock BONUS green.`);updateBonusUI();}
+function switchTab(n){document.querySelectorAll('.tab-page').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.db-tabs span').forEach(s=>s.classList.remove('active'));document.getElementById('tab-'+n).classList.add('on');document.getElementById('t-'+n).classList.add('active');window.scrollTo(0,0);}
+function previewImg(inp){if(inp.files&&inp.files[0]){const r=new FileReader();r.onload=e=>{pickedImg=e.target.result;document.getElementById('imgPreview').src=pickedImg;document.getElementById('imgPreview').style.display='block';};r.readAsDataURL(inp.files[0]);}}
+function createPost(){const txt=document.getElementById('postInput').value.trim();if(!txt&&!pickedImg){alert('Write something mama!');return;}const feed=document.getElementById('feed');const d=document.createElement('div');d.className='post-card';const esc=txt.replace(/</g,'&lt;');d.innerHTML=`<div class="post-head"><div class="p-av">🤰</div><div><div class="p-name">You • Just now • 20 weeks</div><div class="p-meta">Posted to community • 0.0006 earned</div></div></div><div class="p-text">${esc}</div>${pickedImg?`<img class="p-img" src="${pickedImg}">`:''}<div class="p-actions"><span>❤️ 0 Likes</span><span>💬 0 Comments</span><span onclick="openShare('${esc.slice(0,40)}')">↗ Share</span></div>`;feed.prepend(d);document.getElementById('postInput').value='';document.getElementById('imgPreview').style.display='none';pickedImg='';mamacoin+=0.0006;localStorage.setItem('mamacoin',mamacoin.toFixed(6));document.getElementById('walletBal').textContent=mamacoin.toFixed(6)+' MAMACOIN';alert('✅ Posted! Your post now appears here in Social feed. Other mamas see it +0.0006 MAMACOIN');}
+function saveDiary(){const t=document.getElementById('diaryInput').value.trim();if(!t) return;const list=document.getElementById('diaryList');const d=document.createElement('div');d.style.cssText=
