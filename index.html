@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{margin:0;padding:0;background:#4A2D6E;width:100%;height:100%;overflow:hidden;position:fixed}
+body{font-family:Arial Black,Arial,sans-serif}
+.bg{position:fixed;inset:0;width:100%;height:100%;z-index:1;background:#4A2D6E}
+.bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.15}
+.ads{position:fixed;left:0;width:100%;height:70px;background:#fff;z-index:20;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-family:Arial;font-size:12px}
+.ads-top{top:0}.ads-bot{bottom:0}
+.marq{position:fixed;left:0;width:100%;height:45px;z-index:21;display:flex;align-items:center;overflow:hidden;white-space:nowrap;background:rgba(0,0,0,0.55)}
+.marq-top{top:70px}.marq-bot{bottom:70px}
+.marq b{color:#FFD700;font-size:28px;font-weight:900;animation:slide 12s linear infinite;padding-left:100%}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.content{position:fixed;top:115px;left:0;width:100%;height:calc(100% - 230px);z-index:12;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.logo-name{color:white;font-size:36px;font-weight:900;text-shadow:0 3px 10px black}
+.sub{color:#FFD700;font-size:15px;font-weight:900;margin:8px 0 40px}
+.btns{display:flex;flex-direction:column;gap:25px;align-items:center}
+.btn{background:none!important;border:none!important;font-weight:900;font-size:22px;cursor:pointer;text-shadow:0 3px 10px black;padding:10px 20px;font-family:Arial Black}
+.btn-gold{color:#FFD700}.btn-purple{color:white}
+#splash{position:fixed;inset:0;width:100%;height:100%;background:#4A2D6E;z-index:100;display:flex;align-items:center;justify-content:center}
+#introVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#4A2D6E}
+.page{display:none;position:fixed;inset:0;background:#4A2D6E;z-index:50;overflow-y:auto;padding:20px 12px}
+.page.on{display:block}
+.agree-box{background:#fff;color:#222;border-radius:16px;padding:18px;font-family:Arial;font-size:14px;line-height:1.6}
+.agree-btn{width:92%;height:52px;background:#FFD700;color:#4A2D6E;border:none;border-radius:50px;font-weight:900;font-size:16px;margin:16px auto;display:block;font-family:Arial Black}
+.back{color:#FFD700;text-align:center;font-weight:900;margin:12px 0;cursor:pointer}
+.inp{width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;margin:6px 0;font-family:Arial}
+</style>
+</head>
+<body>
+<div id="splash" onclick="hideSplash()">
+<video id="introVideo" autoplay muted playsinline><source src="intro.mp4" type="video/mp4"></video>
+</div>
+<div class="bg"><img src="icon.png"></div>
+<div class="ads ads-top">ADS TOP</div>
+<div class="marq marq-top"><b>🔥 COMPLETE TASKS TO EARN MAMACOIN ★ NIGERIA SPECIAL BONUS ★</b></div>
+<div class="content" id="homeContent">
+<div class="logo-name">ossai75.ng</div>
+<div class="sub">Pregnant Mothers Care App</div>
+<div class="btns">
+<button class="btn btn-gold" onclick="openP('agreement')">CREATE FREE ACCOUNT</button>
+<button class="btn btn-purple" onclick="openP('login')">LOGIN TO YOUR ACCOUNT</button>
+</div>
+</div>
+<div class="marq marq-bot"><b>💜 COMPLETE DAILY TASKS TO EARN 10 MAMACOINS ★ SAFE & VERIFIED ★</b></div>
+<div class="ads ads-bot">ADS BOTTOM</div>
+
+<div id="agreement" class="page"><h2 style="text-align:center;color:white;margin-bottom:12px">USER AGREEMENT</h2><div class="agree-box"><p><b>1. ABOUT:</b> Free community for mothers.</p><br><p><b>2. WHAT TO DO:</b> Upload only your own videos.</p><br><p><b>3. WHAT TO AVOID:</b> No copied videos, nude, hate.</p><br><p><b>4. EARNINGS:</b> Earn MAMACOIN for posting, commenting.</p><br><p><b>5. WALLET:</b> 1 MAMACOIN = 75. Min withdraw 50.</p></div><button class="agree-btn" onclick="openP('register')">I AGREE - CONTINUE</button><div class="back" onclick="openP('home')">← Back</div></div>
+<div id="register" class="page"><h2 style="text-align:center;color:white">Create Account</h2><div class="agree-box"><input class="inp" placeholder="Full Name"><input class="inp" placeholder="Email"><input class="inp" type="password" placeholder="Password"></div><button class="agree-btn" onclick="openP('feed')">CREATE</button><div class="back" onclick="openP('agreement')">← Back</div></div>
+<div id="login" class="page"><h2 style="text-align:center;color:white">Login</h2><div class="agree-box"><input class="inp" placeholder="Email"><input class="inp" type="password" placeholder="Password"></div><button class="agree-btn" onclick="openP('feed')">LOGIN</button><div class="back" onclick="openP('home')">← Back</div></div>
+<div id="feed" class="page"><h2 style="text-align:center;color:white">Feed</h2><button class="agree-btn" onclick="alert('Music +0.0002')">WATCH MUSIC</button><div class="back" onclick="openP('home')">Logout</div></div>
+
+<script>
+function openP(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+if(id==='home'){
+document.getElementById('homeContent').style.display='flex';
+}else{
+document.getElementById('homeContent').style.display='none';
+document.getElementById(id).classList.add('on');
+}
+}
+function hideSplash(){
+let s=document.getElementById('splash');
+s.style.transition='opacity 0.6s';
+s.style.opacity='0';
+setTimeout(()=>s.style.display='none',600);
+}
+// FORCE HIDE AFTER 4 SECONDS - NO MORE STUCK HEART
+setTimeout(hideSplash,4000);
+// Also hide if user taps
+document.getElementById('splash').addEventListener('click',hideSplash);
+</script>
+</body>
+  </html>
