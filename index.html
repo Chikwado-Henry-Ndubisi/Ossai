@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>MamaConnect V9 Ads Logic</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;background:#EDE7FF;font-family:Arial Black,Arial,sans-serif}
+.phone{width:100%;min-height:100vh;background:#EDE7FF;position:relative}
+.bg-logo{position:fixed;inset:0;background:url('icon.png') no-repeat center 55%;background-size:135% auto;opacity:0.10;pointer-events:none;z-index:0}
+.dash{width:100%;min-height:100vh;padding-bottom:30px;position:relative;z-index:1}
+.db-h{background:#2D0F5A;padding:24px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+.db-tabs{background:#2D0F5A;display:flex;gap:14px;padding:14px 14px 26px;overflow-x:auto;position:sticky;top:76px;z-index:49;box-shadow:0 8px 20px rgba(0,0,0,0.35)}
+.db-tabs::-webkit-scrollbar{display:none}
+.db-tabs span{padding:28px 36px;border-radius:34px;font-size:30px;font-weight:900;color:#CFC2FF;background:rgba(255,255,255,0.18);flex-shrink:0;min-height:88px;display:flex;align-items:center;border:3px solid transparent}
+.db-tabs span.active{background:#FFD54F;color:#2D0F5A;transform:scale(1.08);box-shadow:0 8px 20px rgba(0,0,0,0.5)}
+.ad-safe-wrap{width:100%;padding:0 14px;margin-top:36px;position:relative;z-index:1}
+.ad-box{width:100%;background:#FFF;border:3px dashed #C4B5FF;border-radius:24px;padding:26px;text-align:center;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,0.08)}
+.tab{display:none;padding:16px;width:100%;z-index:1;position:relative}.tab.on{display:block}
+.write{background:white;border-radius:32px;padding:30px;width:100%;box-shadow:0 16px 40px rgba(45,15,90,0.22);border:3px solid #EDE7FF}
+.w-inp{width:100%;background:#F5F0FF;border-radius:24px;padding:28px;border:3px solid #EDE7FF;outline:none;font-size:30px;min-height:140px;font-family:Arial Black;color:#2D0F5A}
+.w-inp::placeholder{font-size:26px;color:#8A7AB5;font-family:Arial Black}
+.bigBtn{padding:28px 30px;border-radius:28px;border:none;font-weight:900;font-size:26px;font-family:Arial Black;min-height:86px;cursor:pointer;box-shadow:0 7px 0 rgba(0,0,0,0.24)}
+.pi{position:fixed;top:50%;right:12px;width:132px;height:132px;border-radius:50%;border:6px solid #fff;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 30%, #ffe27a,#FFD700 45%, #b38600);box-shadow:0 0 40px #FFD700,0 16px 36px rgba(0,0,0,0.55)}
+.pi-bonus-text{font-size:24px;font-weight:900;color:#000;background:#fff;padding:4px 12px;border-radius:12px;margin-top:6px;letter-spacing:1px;box-shadow:0 3px 0 rgba(0,0,0,0.2)}
+.pi-c{position:absolute;top:-18px;right:-18px;background:#FF3B30;color:white;font-size:20px;font-weight:900;padding:10px 16px;border-radius:22px;border:4px solid white}
+.post{background:white;border-radius:32px;padding:30px;margin:26px 0;width:100%;box-shadow:0 16px 40px rgba(45,15,90,0.18);border:3px solid #F0E9FF}
+.post-actions{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.act-btn{flex:1;min-width:90px;padding:16px 10px;border-radius:18px;border:2.5px solid #EDE7FF;background:#F5F0FF;font-size:20px;font-family:Arial Black;color:#2D0F5A;text-align:center;cursor:pointer;min-height:62px;display:flex;align-items:center;justify-content:center;gap:6px}
+.act-btn.pay{background:#FFF9E6;border-color:#FFD54F}
+.act-btn.liked{background:#FFD54F;color:#2D0F5A;border-color:#FFD54F}
+#adModal{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:none;align-items:center;justify-content:center}
+#adModalContent{background:white;border-radius:30px;padding:40px;text-align:center;width:90%;max-width:360px}
+</style>
+</head>
+<body>
+<div class="phone"><div class="bg-logo"></div><div class="dash">
+<div class="db-h"><div style="display:flex;align-items:center;gap:14px"><span style="font-size:40px">🪷</span><b style="font-size:32px">MamaConnect</b> <span style="background:#FFD54F;color:#2D0F5A;padding:14px 22px;border-radius:22px;font-size:20px">MAMA</span></div><div style="font-size:22px;border:3px solid #FFD54F;color:#FFD54F;padding:14px 22px;border-radius:26px;font-weight:900">◎ <span id="topBal">0.0000</span></div></div>
+
+<div class="db-tabs">
+<span id="tt-social" class="active" onclick="sw('social')">SOCIAL</span>
+<span id="tt-diary" onclick="sw('diary')">DIARY</span>
+<span id="tt-earn" onclick="sw('earn')">EARN</span>
+<span id="tt-task" onclick="sw('task')">TASK</span>
+<span id="tt-wallet" onclick="sw('wallet')">WALLET</span>
+<span id="tt-market" onclick="sw('market')">MARKET</span>
+<span id="tt-more" onclick="sw('more')">MORE</span>
+</div>
+
+<div class="pi" onclick="clickBonus()"><div style="font-size:48px">⚡</div><div class="pi-bonus-text">BONUS</div><div class="pi-c" id="piCount">10/10</div></div>
+
+<div id="tab-social" class="tab on">
+<div class="write">
+<div style="font-weight:900;color:#2D0F5A;font-size:34px;margin-bottom:22px">Write Post <span id="postEarnLabel" style="background:#FFD54F;padding:12px 24px;border-radius:18px;font-size:24px">+0.0002</span></div>
+<textarea id="postInput" class="w-inp" placeholder="How are you feeling today mama?"></textarea>
+<div style="display:flex;gap:18px;margin-top:28px">
+<button class="bigBtn" style="flex:1;background:#EDE7FF;color:#2D0F5A" onclick="document.getElementById('imgPick').click()">🖼️ PHOTO</button>
+<button class="bigBtn" style="flex:1;background:#E3DCFF;color:#2D0F5A" onclick="document.getElementById('vidPick').click()">🎬 VIDEO</button>
+<button id="postBtn" class="bigBtn" style="flex:1.2;background:#FFC928;color:#2D0F5A;font-size:30px" onclick="tryPostWithAd()">POST</button>
+</div>
+<input type="file" id="imgPick" accept="image/*" style="display:none" onchange="previewImg(this)">
+<input type="file" id="vidPick" accept="video/*" style="display:none" onchange="previewVid(this)">
+<img id="imgPreview" style="display:none;width:100%;border-radius:28px;margin-top:26px;max-height:440px;object-fit:cover;border:4px solid #EDE7FF">
+<video id="vidPreview" style="display:none;width:100%;border-radius:28px;margin-top:26px;max-height:440px;border:4px solid #EDE7FF" controls></video>
+</div>
+
+<div class="ad-safe-wrap"><div class="ad-box"><div style="font-size:15px;font-family:Arial Black;color:#9A8AC7">ADVERTISEMENT — SAFE</div><div style="font-size:24px;font-family:Arial Black;color:#6B5B9A;margin-top:10px">📢 Banner Ad — 36px away — Safe</div><div style="font-size:16px;color:#AAA;font-family:Arial;margin-top:10px">3 ads total: Social / Earn / Market</div></div></div>
+<div id="feedList"></div>
+</div>
+
+<div id="tab-diary" class="tab"><div style="background:white;border-radius:32px;padding:30px;border:3px solid #EDE7FF"><textarea id="diaryInput" placeholder="Private diary..." style="width:100%;height:170px;background:#F5F0FF;border:3px solid #EDE7FF;border-radius:26px;padding:28px;outline:none;font-size:30px;font-family:Arial Black"></textarea><button onclick="saveDiaryWithAd()" class="bigBtn" style="background:#FFC928;color:#2D0F5A;margin-top:26px;width:100%;font-size:28px">Save Private +<span id="diaryEarnLabel">0.0002</span></button></div><div id="diaryList"></div></div>
+
+<div id="tab-earn" class="tab">
+<div style="background:white;padding:34px;border-radius:32px;margin:22px 0;display:flex;justify-content:space-between;align-items:center;font-family:Arial Black;color:#2D0F5A;border:3px solid #F0E9FF"><span style="font-size:30px">📝 Posting Earn</span><span id="earnPostVal" style="background:#FFD54F;padding:20px 28px;border-radius:24px;font-size:26px">+0.0002</span></div>
+<div id="videoEarnBox" onclick="watchVideoEarn()" style="background:linear-gradient(135deg,#2D0F5A,#5A2DB5);padding:34px;border-radius:32px;margin:22px 0;color:white;cursor:pointer;border:3px solid #FFD54F"><div style="font-size:30px">▶️ Watch Music/Quote Videos</div><div style="font-size:22px;margin-top:12px;font-family:Arial">Watch 3-4 videos to unlock BONUS again. Ad shows first, repeat every 60sec</div><div style="margin-top:16px;background:#FFD54F;color:#2D0F5A;padding:16px 24px;border-radius:20px;display:inline-block;font-size:24px">WATCH NOW <span id="watchProgress">0/4</span></div></div>
+<div style="background:#FFF9E6;padding:30px;border-radius:30px;margin-top:26px;font-family:Arial Black;color:#2D0F5A;border:3px solid #FFE9A8"><span style="font-size:30px">Mamas: <b id="refCount">0</b> → Discount <b id="discountInfo" style="font-size:34px">0%</b></span></div>
+<div class="ad-safe-wrap"><div class="ad-box"><div style="font-size:15px;font-family:Arial Black;color:#9A8AC7">ADVERTISEMENT</div><div style="font-size:24px;font-family:Arial Black;color:#6B5B9A;margin-top:10px">📢 Earn Tab — 2nd Ad</div></div></div>
+</div>
+
+<div id="tab-task" class="tab"><div style="background:white;padding:36px;border-radius:32px;display:flex;justify-content:space-between;align-items:center;font-family:Arial Black;color:#2D0F5A;border:3px solid #F0E9FF"><span style="font-size:30px">⚡ Daily Bonus Task</span><span style="background:#FFD54F;padding:20px 28px;border-radius:26px;font-size:26px">+0.0006</span></div>
+<div style="background:white;padding:32px;border-radius:32px;margin-top:26px;font-family:Arial Black;color:#2D0F5A;border:3px solid #F0E9FF"><div style="font-size:28px">Invite Link:</div><input style="width:100%;padding:26px;border-radius:24px;border:3px solid #EDE7FF;margin-top:20px;font-size:22px" value="https://ossai75.ng/invite?ref=you" readonly><button onclick="inviteMama()" class="bigBtn" style="margin-top:26px;background:#2D0F5A;color:white;width:100%;font-size:28px">Invite Mama <span id="refCount2">0</span>/12</button></div></div>
+
+<div id="tab-wallet" class="tab"><div style="background:white;padding:56px;border-radius:34px;text-align:center;border:3px solid #EDE7FF"><div style="font-size:80px">🪙</div><div style="font-weight:900;font-size:48px;color:#2D0F5A;margin-top:22px" id="walletBal">0.0000 MAMACOIN</div><div style="font-size:24px;color:#888;margin-top:22px;font-family:Arial Black" id="walletRole">Role: MAMA | Discount 0%</div></div></div>
+
+<div id="tab-market" class="tab"><div id="marketInfo" style="padding:32px;border-radius:30px;font-family:Arial Black;font-size:28px;text-align:center;color:white;background:#2D0F5A"></div><div id="marketList"></div><div class="ad-safe-wrap"><div class="ad-box"><div style="font-size:15px;font-family:Arial Black;color:#9A8AC7">ADVERTISEMENT</div><div style="font-size:24px;font-family:Arial Black;color:#6B5B9A;margin-top:10px">📢 Market — 3rd Ad</div></div></div></div>
+
+<div id="tab-more" class="tab"><div style="background:white;border-radius:34px;padding:34px;line-height:3.8;font-family:Arial Black;color:#2D0F5A;border:3px solid #EDE7FF"><div style="font-size:30px">About ossai75.ng<br>Privacy Policy<br>© 2026 Ndubisi<br><br>← Logout</div></div></div>
+
+</div></div>
+
+<!-- INTERSTITIAL AD MODAL - SIMULATES AdMob -->
+<div id="adModal"><div id="adModalContent"><div style="font-size:20px;font-family:Arial Black;color:#9A8AC7">INTERSTITIAL AD</div><div style="font-size:52px;margin:20px 0">📢</div><div style="font-size:28px;font-family:Arial Black;color:#2D0F5A" id="adModalText">Ad Playing...</div><div style="font-size:18px;font-family:Arial;margin-top:12px;color:#888" id="adModalSub">This will be your real AdMob Interstitial</div><div style="font-size:22px;margin-top:20px;background:#EDE7FF;padding:14px;border-radius:16px;font-family:Arial Black" id="adCountdown">Closing in 3s...</div></div></div>
+
+<script>
+let mamacoin=parseFloat(localStorage.getItem('mamacoin')||'0'), bonusClicks=parseInt(localStorage.getItem('bonusClicks')||'10'), refCount=parseInt(localStorage.getItem('refMamas')||'0'), watchVideos=parseInt(localStorage.getItem('watchVideos')||'0'), lastAdTime=0, pickedImg="", pickedVid="";
+
+function showInterstitialAd(callback, reason){
+  let now = Date.now();
+  if(now - lastAdTime < 60000 && reason !== 'force'){
+    if(callback) callback();
+    return;
+  }
+  lastAdTime = now;
+  let modal = document.getElementById('adModal');
+  let txt = document.getElementById('adModalText');
+  let sub = document.getElementById('adModalSub');
+  txt.textContent = reason || 'Interstitial Ad';
+  sub.textContent = 'Real AdMob will show here. After 3 sec, your action continues.';
+  modal.style.display='flex';
+  let c=3; let cd=document.getElementById('adCountdown');
+  cd.textContent='Closing in '+c+'s...';
+  let int=setInterval(()=>{
+    c--; cd.textContent='Closing in '+c+'s...';
+    if(c<=0){clearInterval(int); modal.style.display='none'; if(callback) callback();}
+  },1000);
+}
+
+function getPostEarn(){return refCount>=6?0.0002:0.0001;} 
+function getDiscount(){return Math.min(refCount*10,50);}
+
+function updateAll(){ 
+  let postE=getPostEarn(), disc=getDiscount(); 
+  let el=(id,v)=>{let e=document.getElementById(id); if(e) e.textContent=v;};
+  el('topBal',mamacoin.toFixed(4)); el('walletBal',mamacoin.toFixed(4)+' MAMACOIN'); el('walletRole','Role: MAMA | Discount '+disc+'%'); el('postEarnLabel','+'+postE.toFixed(4)); el('diaryEarnLabel',postE.toFixed(4)); el('earnPostVal','+'+postE.toFixed(4)); el('piCount',bonusClicks+'/10'); el('refCount',refCount); el('refCount2',refCount); el('discountInfo',disc+'%'); el('watchProgress',watchVideos+'/4');
+  let mInfo=document.getElementById('marketInfo'); if(mInfo){ mInfo.innerHTML=`🤰 MAMA DISCOUNT: ${disc}% OFF<br><span style="font-family:Arial;font-size:22px">${refCount} mamas = ${disc}% discount</span>`;}
+  renderMarket();
+  let pi=document.querySelector('.pi');
+  if(bonusClicks<=0){ pi.style.background='gray'; pi.style.boxShadow='none'; document.querySelector('.pi-bonus-text').textContent='LOCKED'; document.querySelector('.pi-bonus-text').style.background='#FF3B30'; document.querySelector('.pi-bonus-text').style.color='white'; }
+  else { pi.style.background='radial-gradient(circle at 30% 30%, #ffe27a,#FFD700 45%, #b38600)'; pi.style.boxShadow='0 0 40px #FFD700,0 16px 36px rgba(0,0,0,0.55)'; document.querySelector('.pi-bonus-text').textContent='BONUS'; document.querySelector('.pi-bonus-text').style.background='#fff'; document.querySelector('.pi-bonus-text').style.color='#000'; }
+}
+
+function renderMarket(){
+  let list=document.getElementById('marketList'); let disc=getDiscount();
+  let products=[{name:'Baby Diapers Pack',price:8000,img:'🍼'},{name:'Mama Vitamin',price:5000,img:'💊'},{name:'Baby Wipes',price:3000,img:'🧻'},{name:'Mama Cloth Premium',price:12000,img:'👶'}];
+  let html=''; products.forEach(p=>{
+    let finalPrice=p.price*(1-disc/100);
+    let showDisc=disc>0?`<div style="color:#00A651;font-weight:900;font-size:26px">-${disc}% → Pay ₦${finalPrice.toFixed(0)}</div><div style="text-decoration:line-through;color:#999;font-size:20px">Was ₦${p.price}</div>`:`<div style="color:#888;font-size:24px">Invite mamas to unlock</div>`;
+    html+=`<div style="background:white;border-radius:34px;padding:32px;margin:24px 0;display:flex;gap:26px;align-items:center;border:3px solid #F0E9FF"><div style="font-size:60px;width:96px;height:96px;background:#F5F0FF;border-radius:28px;display:flex;align-items:center;justify-content:center;border:3px solid #EDE7FF">${p.img}</div><div style="flex:1"><div style="font-weight:900;font-size:30px;color:#2D0F5A">${p.name}</div><div style="font-weight:900;font-size:30px">₦${p.price}</div>${showDisc}<button class="bigBtn" style="background:#FFD54F;color:#2D0F5A;margin-top:20px;width:100%;font-size:26px">BUY WITH ${disc}% OFF</button></div></div>`;
+  }); list.innerHTML=html;
+}
+
+function clickBonus(){
+  if(bonusClicks<=0){
+    alert('BONUS LOCKED! Watch 4 music/quote videos in EARN tab to unlock. Ad will show first.');
+    sw('earn');
+    return;
+  }
+  bonusClicks--; mamacoin+=0.0006;
+  localStorage.setItem('mamacoin',mamacoin.toFixed(6)); localStorage.setItem('bonusClicks',bonusClicks);
+  updateAll();
+}
+
+function watchVideoEarn(){
+  showInterstitialAd(()=>{
+    watchVideos++;
+    localStorage.setItem('watchVideos',watchVideos);
+    mamacoin+=0.0004;
+    localStorage.setItem('mamacoin',mamacoin.toFixed(6));
+    if(watchVideos>=4){
+      bonusClicks=10;
+      watchVideos=0;
+      localStorage.setItem('bonusClicks','10');
+      localStorage.setItem('watchVideos','0');
+      alert('4 videos watched! BONUS 10/10 UNLOCKED!');
+    } else {
+      alert('Video '+watchVideos+'/4 watched! +0.0004 earned. Watch '+(4-watchVideos)+' more to unlock BONUS. Ad will show again after 60 sec.');
+    }
+    updateAll();
+  }, 'Music/Quote Video - Ad First - Every 60sec');
+}
+
+function tryPostWithAd(){
+  let txt=document.getElementById('postInput').value.trim();
+  if(!txt&&!pickedImg&&!pickedVid) return;
+  showInterstitialAd(()=>{ createPost(); }, 'Post Interstitial Ad');
+}
+
+function saveDiaryWithAd(){
+  showInterstitialAd(()=>{ saveDiary(); }, 'Diary Interstitial Ad');
+}
+
+function previewImg(inp){if(inp.files&&inp.files[0]){let r=new FileReader(); r.onload=e=>{pickedImg=e.target.result; document.getElementById('imgPreview').src=pickedImg; document.getElementById('imgPreview').style.display='block';}; r.readAsDataURL(inp.files[0]);}}
+function previewVid(inp){if(inp.files&&inp.files[0]){let url=URL.createObjectURL(inp.files[0]); pickedVid=url; document.getElementById('vidPreview').src=url; document.getElementById('vidPreview').style.display='block';}}
+
+function createPost(){
+  let txt=document.getElementById('postInput').value.trim();
+  if(!txt&&!pickedImg&&!pickedVid) return;
+  let feed=document.getElementById('feedList');
+  let d=document.createElement('div'); d.className='post';
+  let earn=getPostEarn();
+  let media=""; if(pickedImg) media=`<img style="width:100%;border-radius:30px;margin-top:22px;max-height:460px;object-fit:cover" src="${pickedImg}">`; if(pickedVid) media=`<video style="width:100%;border-radius:30px;margin-top:22px;max-height:460px" controls src="${pickedVid}"></video>`;
+  let postId='p'+Date.now();
+  d.innerHTML=`<div style="display:flex;gap:22px;align-items:center"><div style="width:74px;height:74px;border-radius:50%;background:#FFE6C8;display:flex;align-items:center;justify-content:center;font-size:36px">🤰</div><div><div style="font-weight:900;color:#2D0F5A;font-size:26px">You • Just now</div><div style="font-size:20px;color:#888;font-family:Arial">Earned +${earn.toFixed(4)}</div></div></div><div style="margin:22px 0;font-size:30px;font-family:Arial Black;color:#222">${txt}</div>${media}
+  <div class="post-actions">
+    <div class="act-btn" id="like-${postId}" onclick="doLike('${postId}')">❤️ <span id="likeCount-${postId}">0</span> LIKE</div>
+    <div class="act-btn pay" onclick="doCommentPay('${postId}')">💬 COMMENT +0.0001</div>
+    <div class="act-btn pay" onclick="doSharePay('${postId}')">↗️ SHARE +0.0001</div>
+    <div class="act-btn pay" onclick="doFollowPay('${postId}')">➕ FOLLOW +0.0002</div>
+  </div>`;
+  feed.prepend(d);
+  document.getElementById('postInput').value=''; document.getElementById('imgPreview').style.display='none'; document.getElementById('vidPreview').style.display='none'; pickedImg=''; pickedVid='';
+  mamacoin+=earn; localStorage.setItem('mamacoin',mamacoin.toFixed(6)); updateAll();
+}
+
+function doLike(postId){
+  let btn=document.getElementById('like-'+postId);
+  if(btn.classList.contains('liked')) return;
+  btn.classList.add('liked');
+  let c=document.getElementById('likeCount-'+postId);
+  c.textContent=parseInt(c.textContent)+1;
+}
+
+function doCommentPay(postId){
+  showInterstitialAd(()=>{
+    mamacoin+=0.0001; localStorage.setItem('mamacoin',mamacoin.toFixed(6)); updateAll();
+    alert('Comment earned +0.0001! Ad played.');
+  }, 'Comment Interstitial - Pays 0.0001');
+}
+function doSharePay(postId){
+  showInterstitialAd(()=>{
+    mamacoin+=0.0001; localStorage.setItem('mamacoin',mamacoin.toFixed(6)); updateAll();
+    alert('Share earned +0.0001! Ad played.');
+  }, 'Share Interstitial - Pays 0.0001');
+}
+fu
