@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Dashboard Fixed</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#F5F0FF;font-family:Arial Black,Arial,sans-serif;overflow-x:hidden}
+.phone{width:100%;max-width:100%;margin:0;background:#F5F0FF;min-height:100dvh;position:relative}
+.dash{background:#F5F0FF;min-height:100dvh;position:relative;padding-bottom:90px;width:100%}
+.dash::before{content:"";position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;height:60%;background:url('icon.png') no-repeat center;background-size:70%;opacity:0.05;pointer-events:none;z-index:0}
+.db-h{background:#4A2D6E;padding:16px;display:flex;justify-content:space-between;align-items:center;color:white;position:sticky;top:0;z-index:30;width:100%}
+.db-tabs{background:#4A2D6E;display:flex;gap:10px;padding:0 12px 16px;overflow-x:auto;white-space:nowrap;position:sticky;top:58px;z-index:29}
+.db-tabs::-webkit-scrollbar{display:none}
+.db-tabs span{padding:14px 20px;border-radius:24px;font-size:17px;font-weight:900;cursor:pointer;color:rgba(255,255,255,0.7);background:rgba(0,0,0,0.25);flex-shrink:0}
+.db-tabs span.active{background:#FFD54F;color:#4A2D6E}
+.tab{display:none;padding:16px;width:100%;position:relative;z-index:1}.tab.on{display:block}
+.write{background:white;border-radius:22px;padding:18px;width:100%;box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+.w-inp{width:100%;background:#F5F0FF;border-radius:16px;padding:16px;border:none;outline:none;font-size:20px;min-height:90px;font-family:Arial;resize:none}
+.bigBtn{padding:18px 20px;border-radius:18px;border:none;font-weight:900;font-size:18px;font-family:Arial Black;min-height:58px;cursor:pointer}
+.pi{position:fixed;top:45%;right:12px;width:84px;height:84px;border-radius:50%;border:3px solid #fff;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 30%, #ffe27a,#FFD700 50%, #b38600);box-shadow:0 0 20px #FFD700}
+.pi-c{position:absolute;top:-8px;right:-8px;background:#FF3B30;color:white;font-size:12px;font-weight:900;padding:5px 10px;border-radius:14px;border:2px solid white}
+.post{background:white;border-radius:22px;padding:18px;margin:16px 0;width:100%;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+.roleBadge{font-size:13px;padding:6px 12px;border-radius:14px;font-weight:900}
+.role-mama{background:#FFD54F;color:#4A2D6E}.role-ord{background:#E9E0FF;color:#4A2D6E}
+.product{background:white;border-radius:22px;padding:18px;margin:14px 0;display:flex;gap:14px;align-items:center;width:100%;box-shadow:0 4px 14px rgba(0,0,0,0.07)}
+</style>
+</head>
+<body>
+<div class="phone"><div class="dash">
+<div class="db-h"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:26px">🪷</span><b style="font-size:22px">MamaConnect</b> <span id="roleBadge" class="roleBadge role-mama">MAMA</span></div><div style="font-size:14px;border:2px solid #FFD54F;color:#FFD54F;padding:7px 14px;border-radius:18px">◎ <span id="topBal">0.0000</span></div></div>
+<div class="db-tabs">
+<span id="tt-social" class="active" onclick="sw('social')">Social</span>
+<span id="tt-diary" onclick="sw('diary')">Diary</span>
+<span id="tt-earn" onclick="sw('earn')">Earn</span>
+<span id="tt-task" onclick="sw('task')">Task</span>
+<span id="tt-wallet" onclick="sw('wallet')">Wallet</span>
+<span id="tt-market" onclick="sw('market')">Market</span>
+<span id="tt-more" onclick="sw('more')">More</span>
+</div>
+<div class="pi" onclick="clickBonus()"><div style="font-size:28px">⚡</div><small style="font-size:11px;font-weight:900;color:#4A2D6E">BONUS</small><div class="pi-c" id="piCount">10/10</div></div>
+
+<div id="tab-social" class="tab on">
+<div class="write">
+<div style="font-weight:900;color:#4A2D6E;font-size:20px">Write Post <span id="postEarnLabel" style="background:#FFD54F;padding:5px 12px;border-radius:12px;font-size:14px">+0.0002</span></div>
+<textarea id="postInput" class="w-inp" placeholder="How are you feeling today mama?"></textarea>
+<div style="display:flex;gap:12px;margin-top:16px">
+<button class="bigBtn" style="flex:1;background:#F5F0FF;color:#4A2D6E" onclick="document.getElementById('imgPick').click()">🖼️ PHOTO</button>
+<button class="bigBtn" style="flex:1;background:#E9E0FF;color:#4A2D6E" onclick="document.getElementById('vidPick').click()">🎬 VIDEO</button>
+<button id="postBtn" class="bigBtn" style="flex:1.2;background:#FFC928;color:#4A2D6E" onclick="createPost()">POST</button>
+</div>
+<input type="file" id="imgPick" accept="image/*" style="display:none" onchange="previewImg(this)">
+<input type="file" id="vidPick" accept="video/*" style="display:none" onchange="previewVid(this)">
+<img id="imgPreview" style="display:none;width:100%;border-radius:18px;margin-top:16px;max-height:320px;object-fit:cover">
+<video id="vidPreview" style="display:none;width:100%;border-radius:18px;margin-top:16px;max-height:320px" controls></video>
+<div id="mediaName" style="font-size:14px;color:#888;margin-top:8px;font-family:Arial"></div>
+</div>
+<div id="feedList"></div>
+</div>
+
+<div id="tab-diary" class="tab">
+<div style="background:white;border-radius:22px;padding:18px"><textarea id="diaryInput" placeholder="Private diary..." style="width:100%;height:110px;background:#F5F0FF;border:none;border-radius:16px;padding:16px;outline:none;font-size:20px;font-family:Arial"></textarea><button onclick="saveDiary()" class="bigBtn" style="background:#FFC928;color:#4A2D6E;margin-top:14px;width:100%;font-size:19px">Save Private +<span id="diaryEarnLabel">0.0002</span></button></div>
+<div id="diaryList"></div>
+</div>
+
+<div id="tab-earn" class="tab">
+<div style="background:white;padding:22px;border-radius:20px;margin:12px 0;display:flex;justify-content:space-between;align-items:center;font-size:20px;font-family:Arial"><span>📝 Posting</span><span id="earnPostVal" style="background:#FFD54F;padding:8px 16px;border-radius:16px;font-weight:900">+0.0002</span></div>
+<div onclick="doWatch()" style="background:white;padding:22px;border-radius:20px;margin:12px 0;display:flex;justify-content:space-between;align-items:center;font-size:20px;font-family:Arial;cursor:pointer"><span>▶️ Watch Video</span><span style="background:#FFC928;padding:10px 18px;border-radius:18px;font-weight:900">WATCH</span></div>
+<div style="background:#FFF9E6;padding:20px;border-radius:18px;margin-top:16px;font-size:19px;font-family:Arial">Mamas invited: <b id="refCount">0</b> → Discount <b id="discountInfo">0%</b></div>
+</div>
+
+<div id="tab-task" class="tab">
+<div onclick="clickBonus()" style="background:white;padding:24px;border-radius:20px;cursor:pointer;display:flex;justify-content:space-between;font-size:20px;font-family:Arial Black"><span>⚡ Daily Bonus Task</span><span style="background:#FFD54F;padding:10px 16px;border-radius:16px">+0.0006</span></div>
+<div style="background:white;padding:20px;border-radius:20px;margin-top:16px;font-size:18px;font-family:Arial">Invite Link (only pregnant mamas count):<br><input style="width:100%;padding:16px;border-radius:14px;border:1.5px solid #ddd;margin-top:12px;font-size:15px" value="https://ossai75.ng/invite?ref=you" readonly><button onclick="inviteMama()" class="bigBtn" style="margin-top:16px;background:#4A2D6E;color:white;width:100%;font-size:19px">Invite 1 Mama Test - <span id="refCount2">0</span>/12</button></div>
+</div>
+
+<div id="tab-wallet" class="tab"><div style="background:white;padding:32px;border-radius:22px;text-align:center"><div style="font-size:48px">🪙</div><div style="font-weight:900;font-size:32px;color:#4A2D6E;margin-top:12px" id="walletBal">0.0000 MAMACOIN</div><div style="font-size:15px;color:#888;margin-top:10px;font-family:Arial" id="walletRole">Role: MAMA | Discount 0%</div></div></div>
+
+<div id="tab-market" class="tab">
+<div id="marketInfo" style="padding:20px;border-radius:20px;font-family:Arial Black;font-size:19px;text-align:center;color:white"></div>
+<div id="marketList"></div>
+</div>
+
+<div id="tab-more" class="tab"><div style="background:white;border-radius:20px;padding:22px;line-height:2.8;font-size:20px;font-family:Arial">About ossai75.ng<br>Privacy<br>© 2026 Ndubisi<br><br><span style="color:#4A2D6E;font-weight:900;font-size:22px">← Logout</span></div></div>
+
+</div></div>
+
+<script>
+let mamacoin=parseFloat(localStorage.getItem('mamacoin')||'0'), bonusClicks=parseInt(localStorage.getItem('bonusClicks')||'10'), refCount=parseInt(localStorage.getItem('refMamas')||'0'), userRole=localStorage.getItem('userRole')||'mama', pickedImg="", pickedVid="";
+function getPostEarn(){if(userRole==='mama') return 0.0002; return refCount>=6?0.0002:0.0001;}
+function getWatchEarn(){if(userRole==='mama') return 0.0004; return refCount>=12?0.0004:0.0002;}
+function getDiscount(){if(userRole!=='mama') return 0; return Math.min(refCount*10,50);}
+function updateAll(){
+ let postE=getPostEarn(), disc=getDiscount();
+ let el=(id,v)=>{let e=document.getElementById(id); if(e) e.textContent=v;};
+ el('topBal',mamacoin.toFixed(4)); el('walletBal',mamacoin.toFixed(4)+' MAMACOIN'); el('walletRole','Role: '+userRole.toUpperCase()+' | Discount '+disc+'%');
+ el('postEarnLabel','+'+postE.toFixed(4)); el('diaryEarnLabel',postE.toFixed(4)); el('earnPostVal','+'+postE.toFixed(4)); el('piCount',bonusClicks+'/10'); el('refCount',refCount); el('refCount2',refCount); el('discountInfo',disc+'%');
+ let mInfo=document.getElementById('marketInfo'); if(mInfo){ if(userRole==='mama'){ mInfo.innerHTML=`🤰 MAMA DISCOUNT: ${disc}% OFF<br><span style="font-family:Arial;font-size:15px">${refCount} mamas = ${disc}% discount</span>`; mInfo.style.background='#4A2D6E';} else { mInfo.innerHTML=`🚫 ORDINARY - NO DISCOUNT<br><span style="font-family:Arial;font-size:15px">Only Mamas get discount</span>`; mInfo.style.background='#888';}}
+ renderMarket();
+}
+function renderMarket(){
+ let list=document.getElementById('marketList'); let disc=getDiscount();
+ let products=[{name:'Baby Diapers Pack',price:8000,img:'🍼'},{name:'Mama Vitamin',price:5000,img:'💊'},{name:'Baby Wipes',price:3000,img:'🧻'},{name:'Mama Cloth Premium',price:12000,img:'👶'}];
+ let html=''; products.forEach(p=>{
+  let finalPrice = userRole==='mama'? p.price*(1-disc/100) : p.price;
+  let showDisc = userRole==='mama' && disc>0? `<div style="color:#00A651;font-weight:900;font-size:16px">-${disc}% → Pay ₦${finalPrice.toFixed(0)}</div><div style="text-decoration:line-through;color:#999">Was ₦${p.price}</div>` : (userRole==='mama'? `<div style="color:#888;font-size:14px">Invite mamas to unlock</div>` : `<div style="color:#FF3B30;font-weight:900">NO DISCOUNT FOR ORDINARY</div>`);
+  html+=`<div class="product"><div style="font-size:40px;width:60px;height:60px;background:#F5F0FF;border-radius:16px;display:flex;align-items:center;justify-content:center">${p.img}</div><div style="flex:1"><div style="font-weight:900;font-size:19px;color:#4A2D6E">${p.name}</div><div style="font-weight:900;font-size:20px">₦${p.price}</div>${showDisc}<button class="bigBtn" style="background:${userRole==='mama'?'#FFD54F':'#ddd'};color:#4A2D6E;margin-top:10px;width:100%" onclick="buyProduct('${p.name}',${finalPrice})">${userRole==='mama' && disc>0? 'BUY WITH '+disc+'% OFF':'BUY NOW'}</button></div></div>`;
+ }); list.innerHTML=html;
+}
+function buyProduct(name,price){ if(userRole!=='mama'){alert('❌ ORDINARY = NO DISCOUNT'); return;} alert('✅ '+name+' bought with '+getDiscount()+'% discount! Pay ₦'+price.toFixed(0));}
+function clickBonus(){if(bonusClicks<=0){alert('Bonus finished! Watch 3 videos');return;} bonusClicks--; mamacoin+=0.0006; localStorage.setItem('mamacoin',mamacoin.toFixed(6)); localStorage.setItem('bonusClicks',bonusClicks); updateAll();}
+function doWatch(){mamacoin+=getWatchEarn(); let cnt=parseInt(localStorage.getItem('watchCnt')||'0')+1; localStorage.setItem('watchCnt',cnt); localStorage.setItem('mamacoin',mamacoin.toFixed(6)); if(cnt>=3){bonusClicks=10; localStorage.setItem('bonusClicks','10'); localStorage.setItem('watchCnt','0'); alert('3 videos! Bonus 10/10 unlocked');} updateAll();}
+function inviteMama(){refCount++; localStorage.setItem('refMamas',refCount); updateAll();}
+function sw(n){document.querySelectorAll('.tab').forEach(p=>p.classList.remove('on')); document.querySelectorAll('.db-tabs span').forEach(s=>s.classList.remove('active')); document.getElementById('tab-'+n).classList.add('on'); document.getElementById('tt-'+n).classList.add('active');}
+function previewImg(inp){if(inp.files&&inp.files[0]){pickedVid=""; document.getElementById('vidPreview').style.display='none'; let r=new FileReader(); r.onload=e=>{pickedImg=e.target.result; document.getElementById('imgPreview').src=pickedImg; document.getElementById('imgPreview').style.display='block';}; r.readAsDataURL(inp.files[0]);}}
+function previewVid(inp){if(inp.files&&inp.files[0]){pickedImg=""; document.getElementById('imgPreview').style.display='none'; let url=URL.createObjectURL(inp.files[0]); pickedVid=url; document.getElementById('vidPreview').src=url; document.getElementById('vidPreview').style.display='block';}}
+function createPost(){let txt=document.getElementById('postInput').value.trim(); if(!txt&&!pickedImg&&!pickedVid) return; let feed=document.getElementById('feedList'); let d=document.createElement('div'); d.className='post'; let earn=getPostEarn(); let media=""; if(pickedImg) media=`<img style="width:100%;border-radius:18px;margin-top:12px;max-height:340px;object-fit:cover" src="${pickedImg}">`; if(pickedVid) media=`<video style="width:100%;border-radius:18px;margin-top:12px;max-height:340px" controls src="${pickedVid}"></video>`; d.innerHTML=`<div style="display:flex;gap:12px;align-items:center"><div style="width:48px;height:48px;border-radius:50%;background:#FFE6C8;display:flex;align-items:center;justify-content:center">🤰</div><div><div style="font-weight:900;color:#4A2D6E">You • Just now</div><div style="font-size:14px;color:#888;font-family:Arial">Earned +${earn.toFixed(4)}</div></div></div><div style="margin:12px 0;font-size:19px;font-family:Arial">${txt}</div>${media}`; feed.prepend(d); document.getElementById('postInput').value=''; document.getElementById('imgPreview').style.display='none'; document.getElementById('vidPreview').style.display='none'; pickedImg=''; pickedVid=''; mamacoin+=earn; localStorage.setItem('mamacoin',mamacoin.toFixed(6)); updateAll();}
+function saveDiary(){let t=document.getElementById('diaryInput').value.trim(); if(!t) return; let list=document.getElementById('diaryList'); let d=document.createElement('div'); d.style.cssText='background:white;border-radius:18px;padding:18px;margin-top:14px;font-size:18px;font-family:Arial'; d.innerHTML=`<b>Today</b><div style="margin-top:8px">${t}</div>`; list.prepend(d); document.getElementById('diaryInput').value=''; mamacoin+=getPostEarn(); localStorage.setItem('mamacoin',mamacoin.toFixed(6)); updateAll();}
+updateAll();
+</script>
+</body>
+  </html>
