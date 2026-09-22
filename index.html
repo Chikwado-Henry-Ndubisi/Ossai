@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ossai75.ng</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{margin:0;padding:0;background:#4A2D6E;width:100%;height:100%;overflow:hidden;position:fixed;font-family:Arial Black,Arial,sans-serif}
+#splash{position:fixed;inset:0;background:#4A2D6E;z-index:100;display:flex;align-items:center;justify-content:center}
+#splash img{width:70%;max-width:360px;object-fit:contain}
+.page{display:none;position:fixed;inset:0;background:#4A2D6E;z-index:50;overflow-y:auto;padding:0}
+.page.on{display:block}
+.phone{max-width:480px;margin:0 auto;min-height:100vh;background:#4A2D6E;position:relative}
+.agree-box{background:#fff;color:#222;border-radius:20px;padding:20px;font-family:Arial;font-size:16px;line-height:1.7}
+.agree-btn{width:94%;height:68px;background:#FFD700;color:#4A2D6E;border:none;border-radius:50px;font-weight:900;font-size:20px;margin:20px auto;display:block;font-family:Arial Black;box-shadow:0 6px 0 #B38600}
+.back{color:#FFD700;text-align:center;font-weight:900;margin:18px 0;cursor:pointer;font-size:18px}
+.inp{width:100%;padding:16px;border-radius:14px;border:1.5px solid #ddd;margin:10px 0;font-family:Arial;display:block;font-size:18px}
+.sel{width:100%;padding:16px;border-radius:14px;border:1.5px solid #ddd;margin:10px 0;font-family:Arial Black;background:#fff;font-size:16px}
+.dash{background:#F5F0FF;min-height:100vh;position:relative;overflow:hidden;padding-bottom:90px}
+.dash::before{content:"";position:fixed;top:50%;left:50%;transform:translate(-50%,-40%);width:92%;height:70%;background:url('icon.png') no-repeat center;background-size:75%;opacity:0.06;pointer-events:none;z-index:0}
+.db-h{background:#4A2D6E;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;color:white;position:sticky;top:0;z-index:30}
+.db-h b{font-size:20px}
+.db-tabs{background:#4A2D6E;display:flex;gap:8px;padding:0 12px 14px;overflow:auto;white-space:nowrap;position:sticky;top:52px;z-index:29;scrollbar-width:none}
+.db-tabs::-webkit-scrollbar{display:none}
+.db-tabs span{padding:12px 18px;border-radius:22px;font-size:15px;font-weight:900;cursor:pointer;color:rgba(255,255,255,0.7);background:rgba(0,0,0,0.22);font-family:Arial Black;min-height:44px;display:flex;align-items:center}
+.db-tabs span.active{background:#FFD54F;color:#4A2D6E;box-shadow:0 3px 8px rgba(0,0,0,0.3)}
+.tab{display:none;padding:14px;position:relative;z-index:1}.tab.on{display:block}
+.write{background:white;border-radius:20px;padding:16px;border:2px solid #E9E0FF}
+.w-inp{width:100%;background:#F5F0FF;border-radius:14px;padding:14px;border:none;outline:none;font-size:18px;min-height:70px;font-family:Arial;resize:none}
+.bigBtn{padding:14px 18px;border-radius:16px;border:none;font-weight:900;font-size:16px;font-family:Arial Black;min-height:54px}
+.pi{position:fixed;top:48%;right:10px;width:78px;height:78px;border-radius:50%;border:3px solid #fff;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 30%, #ffe27a,#FFD700 50%, #b38600);box-shadow:0 0 20px #FFD700;cursor:pointer}
+.pi-c{position:absolute;top:-8px;right:-8px;background:#FF3B30;color:white;font-size:11px;font-weight:900;padding:4px 8px;border-radius:14px;border:2px solid white;font-family:Arial}
+.post{background:white;border-radius:20px;padding:16px;margin:14px 0;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+.roleBadge{font-size:12px;padding:5px 10px;border-radius:12px;font-weight:900;font-family:Arial Black}
+.role-mama{background:#FFD54F;color:#4A2D6E}.role-ord{background:#E9E0FF;color:#4A2D6E}
+.product{background:white;border-radius:20px;padding:16px;margin:14px 0;display:flex;gap:14px;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+.prod-price{font-weight:900;font-size:18px;color:#4A2D6E;font-family:Arial Black}
+</style>
+</head>
+<body>
+
+<div id="splash" onclick="hideSplash()"><img src="icon.png"></div>
+
+<div id="home" class="page on"><div class="phone" style="background:#4A2D6E url('icon.png') no-repeat center 35%;background-size:65%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:100vh;padding:20px">
+<div style="color:white;font-size:48px;font-weight:900;text-shadow:0 4px 12px black">ossai75.ng</div>
+<div style="color:#FFD700;font-size:20px;font-weight:900;margin:12px 0 70px">Pregnant Mothers Care App</div>
+<button class="agree-btn" onclick="openP('agreement')">CREATE FREE ACCOUNT</button>
+<button class="agree-btn" style="background:white;color:#4A2D6E" onclick="openP('login')">LOGIN TO ACCOUNT</button>
+</div></div>
+
+<div id="agreement" class="page"><div class="phone" style="padding:20px 14px">
+<h2 style="text-align:center;color:white;margin-bottom:14px;font-size:28px">USER AGREEMENT</h2>
+<div class="agree-box" style="max-height:62vh;overflow-y:auto">
+<b>1. EARNINGS:</b> Mama Post 0.0002 Watch 0.0004, Ordinary Post 0.0001 Watch 0.0002, Bonus 0.0006<br><br>
+<b>2. REFERRAL:</b> Only pregnant mamas count. 6 mamas → Post upgrade, 12 mamas → Watch upgrade<br><br>
+<b>3. MARKET NEW RULE:</b> Pregnant mothers use referral bonus as DISCOUNT to buy any products. Each referral = 10% discount. Max 50%. Ordinary person NO discount at all.<br><br>
+<b>4. WALLET:</b> 1 MAMACOIN = 75 Naira, Min 50<br><br>
+<b>5. KYC:</b> Full name + ID must match bank
+</div>
+<button class="agree-btn" onclick="openP('register')">I AGREE - CONTINUE</button>
+<div class="back" onclick="openP('home')">← Back</div>
+</div></div>
+
+<div id="register" class="page"><div class="phone" style="padding:20px 14px">
+<h2 style="text-align:center;color:white;font-size:28px">Create Account</h2>
+<div class="agree-box" style="margin-top:16px">
+<input id="rName" class="inp" placeholder="Full Name matching bank">
+<input id="rEmail" class="inp" placeholder="Email">
+<select id="rRole" class="sel"><option value="mama">I am Pregnant Mama 🤰</option><option value="ordinary">I am Ordinary Person</option></select>
+<input class="inp" type="password" placeholder="Password">
+</div>
+<button class="agree-btn" onclick="doRegister()">CREATE ACCOUNT</button>
+<div class="back" onclick="openP('agreement')">← Back</div>
+</div></div>
+
+<div id="login" class="page"><div class="phone" style="padding:20px 14px">
+<h2 style="text-align:center;color:white;font-size:28px">Login</h2>
+<div class="agree-box" style="margin-top:16px"><input class="inp" placeholder="Email"><input class="inp" type="password" placeholder="Password"></div>
+<button class="agree-btn" onclick="openP('feed')">LOGIN</button>
+<div class="back" onclick="openP('home')">← Back</div>
+</div></div>
+
+<div id="feed" class="page"><div class="phone"><div class="dash">
+<div class="db-h"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:24px">🪷</span><b>MamaConnect</b> <span id="roleBadge" class="roleBadge role-mama">MAMA</span></div><div style="font-size:13px;border:2px solid #FFD54F;color:#FFD54F;padding:6px 12px;border-radius:16px;font-family:Arial Black">◎ <span id="topBal">0.0000</span></div></div>
+<div class="db-tabs">
+<span id="tt-social" class="active" onclick="sw('social')">Social</span>
+<span id="tt-diary" onclick="sw('diary')">Diary</span>
+<span id="tt-earn" onclick="sw('earn')">Earn</span>
+<span id="tt-task" onclick="sw('task')">Task</span>
+<span id="tt-wallet" onclick="sw('wallet')">Wallet</span>
+<span id="tt-market" onclick="sw('market')">Market</span>
+<span id="tt-more" onclick="sw('more')">More</span>
+</div>
+<div class="pi" onclick="clickBonus()"><div style="font-size:26px">⚡</div><small style="font-size:10px;font-weight:900;color:#4A2D6E;font-family:Arial Black">BONUS</small><div class="pi-c" id="piCount">10/10</div></div>
+
+<div id="tab-social" class="tab on">
+<div class="write">
+<div style="font-weight:900;color:#4A2D6E;font-size:18px;font-family:Arial Black">Write Post <span id="postEarnLabel" style="background:#FFD54F;padding:4px 10px;border-radius:12px;font-size:13px">+0.0002</span></div>
+<textarea id="postInput" class="w-inp" placeholder="How are you feeling today mama?"></textarea>
+<div style="display:flex;gap:10px;margin-top:14px">
+<button class="bigBtn" style="flex:1;background:#F5F0FF" onclick="document.getElementById('imgPick').click()">🖼️ PHOTO</button>
+<button class="bigBtn" style="flex:1;background:#E9E0FF" onclick="document.getElementById('vidPick').click()">🎬 VIDEO</button>
+<button id="postBtn" class="bigBtn" style="flex:1.2;background:#FFC928;color:#4A2D6E" onclick="createPost()">POST</button>
+</div>
+<input type="file" id="imgPick" accept="image/*" style="display:none" onchange="previewImg(this)">
+<input type="file" id="vidPick" accept="video/*" style="display:none" onchange="previewVid(this)">
+<img id="imgPreview" style="display:none;width:100%;border-radius:16px;margin-top:14px;max-height:260px;object-fit:cover">
+<video id="vidPreview" style="display:none;width:100%;border-radius:16px;margin-top:14px;max-height:260px" controls></video>
+<div id="mediaName" style="font-size:13px;color:#888;margin-top:8px;font-family:Arial"></div>
+</div>
+<div id="feedList"></div>
+</div>
+
+<div id="tab-diary" class="tab">
+<div style="background:white;border-radius:20px;padding:16px"><textarea id="diaryInput" placeholder="Private diary..." style="width:100%;height:90px;background:#F5F0FF;border:none;border-radius:14px;padding:14px;outline:none;font-size:18px;font-family:Arial"></textarea><button onclick="saveDiary()" class="bigBtn" style="background:#FFC928;color:#4A2D6E;margin-top:12px;width:100%">Save Private +<span id="diaryEarnLabel">0.0002</span></button></div>
+<div id="diaryList"></div>
+</div>
+
+<div id="tab-earn" class="tab">
+<div style="background:white;padding:18px;border-radius:18px;margin:10px 0;display:flex;justify-content:space-between;font-family:Arial;font-size:18px"><span>📝 Posting</span><span id="earnPostVal" style="background:#FFD54F;padding:6px 14px;border-radius:14px;font-size:14px;font-weight:900">+0.0002</span></div>
+<div onclick="doWatch()" style="background:white;padding:18px;border-radius:18px;margin:10px 0;display:flex;justify-content:space-between;font-family:Arial;font-size:18px;cursor:pointer"><span>▶️ Watch Video</span><span style="background:#FFC928;padding:8px 16px;border-radius:16px;font-size:14px;font-weight:900">WATCH +<span id="earnWatchLabel1">0.0004</span></span></div>
+<div style="background:#FFF9E6;padding:16px;border-radius:16px;margin-top:14px;font-size:16px;font-family:Arial">Mamas invited: <b id="refCount">0</b> → Discount <b id="discountInfo">0%</b><br><span id="upgradeInfo" style="font-size:14px;color:#666">Invite 6 mamas = post upgrade, 12 = watch upgrade</span></div>
+</div>
+
+<div id="tab-task" class="tab">
+<div onclick="clickBonus()" style="background:white;padding:20px;border-radius:18px;cursor:pointer;display:flex;justify-content:space-between;font-family:Arial Black;font-size:18px"><span>⚡ Daily Bonus</span><span style="background:#FFD54F;padding:8px 14px;border-radius:16px;font-size:15px">+0.0006</span></div>
+<div style="background:white;padding:18px;border-radius:18px;margin-top:14px;font-family:Arial;font-size:16px">Invite Link (only pregnant mamas count):<br><input style="width:100%;padding:14px;border-radius:12px;border:1.5px solid #ddd;margin-top:10px;font-size:14px" value="https://ossai75.ng/invite?ref=you" readonly><button onclick="inviteMama()" class="bigBtn" style="margin-top:14px;background:#4A2D6E;color:white;width:100%">Invite 1 Mama Test - <span id="refCount2">0</span>/12</button></div>
+</div>
+
+<div id="tab-wallet" class="tab">
+<div style="background:white;padding:28px;border-radius:20px;text-align:center"><div style="font-size:40px">🪙</div><div style="font-weight:900;font-size:26px;color:#4A2D6E;margin-top:10px;font-family:Arial Black" id="walletBal">0.0000 MAMACOIN</div><div style="font-size:14px;color:#888;margin-top:8px;font-family:Arial" id="walletRole">Role: MAMA</div></div>
+</div>
+
+<div id="tab-market" class="tab">
+<div id="marketInfo" style="background:#4A2D6E;color:white;padding:18px;border-radius:18px;font-family:Arial Black;font-size:17px;text-align:center"></div>
+<div id="marketList" style="margin-top:10px"></div>
+</div>
+
+<div id="tab-more" class="tab"><div style="background:white;border-radius:18px;padding:20px;line-height:2.6;font-size:18px;font-family:Arial">About ossai75.ng<br>Privacy<br>© 2026 Ndubisi Chikwado Henry<br><br><span onclick="openP('home')" style="color:#4A2D6E;font-weight:900;cursor:pointer;font-family:Arial Black;font-size:20px">← Logout</span></div></div>
+
+</div></div></div>
+
+<script>
+function hideSplash(){let s=document.getElementById('splash');if(s){s.style.transition='opacity 0.8s';s.style.opacity='0';setTimeout(()=>s.style.display='none',800);}}
+setTimeout(hideSplash,2000);
+function openP(id){document.querySelectorAll('.page').forEach(p=>{p.classList.remove('on');}); document.getElementById(id).classList.add('on'); if(id==='feed') updateAll();}
+let mamacoin=parseFloat(localStorage.getItem('mamacoin')||'0'), bonusClicks=parseInt(localStorage.getItem('bonusClicks')||'10'), refCount=parseInt(localStorage.getItem('refMamas')||'0'), userRole=localStorage.getItem('userRole')||'mama', pickedImg="", pickedVid="";
+function doRegister(){let name=document.getElementById('rName').value.trim(), role=document.getElementById('rRole').value; if(!name){alert('Enter name matching bank');return;} localStorage.setItem('userRole',role); localStorage.setItem('userName',name); userRole=role; openP('feed');}
+function getPostEarn(){if(userRole==='mama') return 0.0002; return refCount>=6?0.0002:0.0001;}
+function getWatchEarn(){if(userRole==='mama') return 0.0004; return refCount>=12?0.0004:0.0002;}
+function getDiscount(){if(userRole!=='mama') return 0; return Math.min(refCount*10,50);}
+function updateAll(){
+ let postE=getPostEarn(), watchE=getWatchEarn(), disc=getDiscount();
+ let el=(id,v)=>{let e=document.getElementById(id); if(e) e.textContent=v;};
+ el('topBal',mamacoin.toFixed(4)); el('walletBal',mamacoin.toFixed(4)+' MAMACOIN'); el('walletRole','Role: '+userRole.toUpperCase()+' | Discount '+disc+'%');
+ let rb=document.getElementById('roleBadge'); if(rb){rb.textContent=userRole==='mama'?'MAMA':'ORDINARY'; rb.className='roleBadge '+(userRole==='mama'?'role-mama':'role-ord');}
+ el('postEarnLabel','+'+postE.toFixed(4)); el('diaryEarnLabel',postE.toFixed(4));
+ let pb=document.getElementById('postBtn'); if(pb) pb.textContent='POST +'+postE.toFixed(4);
+ el('earnPostVal','+'+postE.toFixed(4)); el('earnWatchLabel1',watchE.toFixed(4)); el('piCount',bonusClicks+'/10');
+ el('refCount',refCount); el('refCount2',refCount); el('discountInfo',disc+'%');
+ let mInfo=document.getElementById('marketInfo');
+ if(mInfo){
+  if(userRole==='mama'){ mInfo.innerHTML=`🤰 MAMA DISCOUNT ACTIVE: ${disc}% OFF<br><span style="font-family:Arial;font-size:14px;font-weight:400">${refCount} mamas invited → ${disc}% discount on all products</span>`; mInfo.style.background='#4A2D6E';}
+  else { mInfo.innerHTML=`🚫 ORDINARY - NO DISCOUNT<br><span style="font-family:Arial;font-size:14px;font-weight:400">Invite pregnant mamas to become Mama and get discount</span>`; mInfo.style.background='#888';}
+ }
+ renderMarket();
+}
+function renderMarket(){
+ let list=document.getElementById('marketList'); if(!list) return;
+ let disc=getDiscount();
+ let products=[
+  {name:'Baby Diapers Pack', price:8000, img:'🍼'},
+  {name:'Mama Vitamin', price:5000, img:'💊'},
+  {name:'Baby Wipes', price:3000, img:'🧻'},
+  {name:'Mama Cloth', price:12000, img:'👶'}
+ ];
+ let html='';
+ products.forEach(p=>{
+  let finalPrice = userRole==='mama' ? p.price * (1-disc/100) : p.price;
+  let showDisc = userRole==='mama' && disc>0 ? `<div style="color:#FF3B30;font-weight:900;font-size:14px">-${disc}% MAMA DISCOUNT → ₦${finalPrice.toFixed(0)}</div>` : (userRole==='mama' ? `<div style="color:#888;font-size:13px">Invite mamas to unlock discount</div>` : `<div style="color:#FF3B30;font-weight:900;font-size:13px">NO DISCOUNT FOR ORDINARY</div>`);
+  html+=`<div class="product"><div style="font-size:36px">${p.img}</div><div style="flex:1"><div style="font-weight:900;font-size:17px;font-family:Arial Black;color:#4A2D6E">${p.name}</div><div class="prod-price">₦${p.price}</div>${showDisc}<button class="bigBtn" style="background:${userRole==='mama'?'#FFD54F':'#ddd'};color:#4A2D6E;margin-top:8px;width:100%;font-size:15px" onclick="buyProduct('${p.name}',${finalPrice})">BUY NOW ${userRole==='mama' && disc>0 ? 'WITH '+disc+'% OFF' : ''}</button></div></div>`;
+ });
+ list.innerHTML=html;
+}
+function buyProduct(name,price){ if(userRole!=='mama'){alert('❌ Ordinary person has NO discount. You must be Mama to get discount. Invite 1 mama and switch role to Mama in Register.'); return;} let disc=getDiscount(); alert('✅ '+name+' bought with '+disc+'% Mama discount! Price: ₦'+price.toFixed(0)+'\nKYC will verify name matches bank.');}
+function clickBonus(){if(bonusClicks<=0){alert('Bonus finished! Watch 3 videos in Earn tab');return;} bonusClicks--; mamacoin+=0.0006; localStorage.setItem('mamacoin',mamacoin.toFixed(6)); localStorage.setItem('bonusClicks',bonusClicks); updateAll();}
+function doWatch(){let earn=getWatchEarn(); mamacoin+=earn; let cnt=parseInt(localStorage.getItem('watchCnt')||'0')+1; localStorage.setItem('watchCnt',cnt); localStorage.setItem('mamacoin',mamacoin.toFixed(6)); if(cnt>=3){bonusClicks=10; localStorage.setItem('bonusClicks','10'); localStorage.setItem('watchCnt','0'); alert('3 videos watched! Bonus 10/10 unlocked');} updateAll();}
+function inviteMama(){refCount++; localStorage.setItem('refMamas',refCount); if(refCount==6) alert('🎉 6 mamas! Post now 0.0002'); if(refCount==12) alert('🎉🎉 12 mamas! Watch now 0.0004'); updateAll();}
+function sw(n){document.querySelectorAll('.tab').forEach(p=>p.classList.remove('on')); document.querySelectorAll('.db-tabs span').forEach(s=>s.classList.remove('active')); let t=document.getElementById('tab-'+n); if(t) t.classList.add('on'); let tt=document.getElementById('tt-'+n); if(tt) tt.classList.add('active');}
+function previewImg(inp){if(inp.files&&inp.files[0]){pickedVid=""; document.getElementById('vidPreview').style.display='none'; let r=new FileReader(); r.onload=e=>{pickedImg=e.target.result; let pr=document.getElementById('imgPreview'); pr.src=pickedImg; pr.style.display='block'; document.getElementById('mediaName').textContent=inp.files[0].name+' (Photo)';}; r.readAsDataURL(inp.files[0]);}}
+function previewVid(inp){if(inp.files&&inp.files[0]){pickedImg=""; document.getElementById('imgPreview').style.display='none'; let url=URL.createObjectURL(inp.files[0]); pickedVid=url; let pr=document.getElementById('vidPreview'); pr.src=url; pr.style.display='block'; document.getElementById('mediaName').textContent=inp.files[0].name+' (Video) '+(inp.files[0].size/1024/1024).toFixed(1)+'MB';}}
+function createPost(){let txt=document.getElementById('postInput').value.trim(); if(!txt&&!pickedImg&&!pickedVid) return; let feed=document.getElementById('feedList'); let d=document.createElement('div'); d.className='post'; let earn=getPostEarn(); let media=""; if(pickedImg) media=`<img style="width:100%;border-radius:16px;margin-top:10px;max-height:320px;object-fit:cover" src="${pickedImg}">`; if(pickedVid) media=`<video style="width:100%;border-radius:16px;margin-top:10px;max-height:320px" controls src="${pickedVid}"></video>`; d.innerHTML=`<div style="display:flex;gap:10px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#FFE6C8;display:flex;align-items:center;justify-content:center;font-size:20px">🤰</div><div><div style="font-weight:900;color:#4A2D6E;font-size:16px;font-family:Arial Black">You • Just now</div><div style="font-size:13px;color:#888;font-family:Arial">Earned +${earn.toFixed(4)} • ${pickedVid?'Video':'Photo'}</div></div></div><div style="margin:10px 0;font-size:18px;font-family:Arial">${txt.replace(/</g,'&
